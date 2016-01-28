@@ -294,7 +294,7 @@ private final Connection connectDB;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(CardController, gridBagConstraints);
 
-        setSize(new java.awt.Dimension(349, 245));
+        setSize(new java.awt.Dimension(345, 261));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     public void userDetails(String u, String a){
