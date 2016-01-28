@@ -1,0 +1,385 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package wagwaan.reports;
+
+import wagwaan.config.AMSUtility;
+import wagwaan.config.DBObject;
+import com.lowagie.text.Font;
+import com.lowagie.text.FontFactory;
+import com.lowagie.text.PageSize;
+import com.lowagie.text.Phrase;
+import com.lowagie.text.Rectangle;
+import com.lowagie.text.pdf.PdfCell;
+import java.sql.*;
+import java.awt.Desktop;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+/**
+ *
+ * @author Helmut
+ */
+public class OrdersPdf implements java.lang.Runnable{
+    /*
+ * @(#)DefaultTableModel.java	1.43 02/03/09
+ **/
+  
+     java.awt.Desktop deskTop = Desktop.getDesktop();
+    
+    DBObject dbObject;
+    
+    int numberSeq = 0;
+    
+    public static java.sql.Connection connectDB = null;
+    
+    public java.lang.String dbUserName = null;
+    
+    org.netbeans.lib.sql.pool.PooledConnectionSource pConnDB = null;
+    
+    boolean threadCheck = true;
+    
+    java.lang.Thread threadSample;
+    
+    com.lowagie.text.Font pFontHeader = FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD);
+    com.lowagie.text.Font pFontHeader1 = FontFactory.getFont(FontFactory.HELVETICA, 9, Font.NORMAL);
+    
+   
+    java.lang.Runtime rtThreadSample = java.lang.Runtime.getRuntime();
+    
+    java.lang.Process prThread;
+    AMSUtility label = new AMSUtility();
+    private String orders;
+    public void OrdersPdf(java.sql.Connection connDb, String order_no) {
+        this.orders=order_no;
+        connectDB = connDb;
+        
+        dbObject = new DBObject();
+        
+        threadSample = new java.lang.Thread(this, "SampleThread");
+        
+        System.out.println("threadSample created");
+        
+        threadSample.start();
+        
+        System.out.println("threadSample fired");
+        
+    }
+    
+    
+    public void run() {
+        
+        System.out.println("System has entered running mode");
+        
+        while (threadCheck) {
+            
+            System.out.println("O.K. see how we execute target program");
+            
+            this.generatePdf();
+            
+            try {
+                
+                System.out.println("Right, let's wait for task to complete of fail");
+                
+                java.lang.Thread.currentThread().sleep(200);
+                
+                System.out.println("It's time for us threads to get back to work after the nap");
+                
+            } catch(java.lang.InterruptedException IntExec) {
+                
+                System.out.println(IntExec.getMessage());
+                
+            }
+            
+            threadCheck = false;
+            
+            
+            System.out.println("We shall be lucky to get back to start in one piece");
+            
+        }
+        
+        if (!threadCheck) {
+            
+            
+            
+            Thread.currentThread().stop();
+            
+        }
+        
+    }
+    
+    public void generatePdf() {
+       
+        try {
+            
+            java.io.File tempFile = java.io.File.createTempFile("REP"+label.getDateLable()+"_", ".pdf");
+            
+            tempFile.deleteOnExit();
+            
+            java.lang.Runtime rt = java.lang.Runtime.getRuntime();
+            
+            java.lang.String debitTotal = null;
+            
+            java.lang.String creditTotal = null;
+            com.lowagie.text.Document docPdf = new com.lowagie.text.Document(PageSize.A4.rotate());
+            
+            try {
+                
+                try {
+                    
+                    com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
+                    
+                    
+                    String compName = null;
+                    String date = null;
+                    try {
+                      java.sql.Statement st3 = connectDB.createStatement();
+                        java.sql.Statement st4 = connectDB.createStatement();
+                        
+                        java.sql.ResultSet rset2 = st3.executeQuery("SELECT header_name from pb_header");
+                        java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
+                        while(rset2.next())
+                            compName = rset2.getObject(1).toString();
+                        
+                        while(rset4.next())
+                            date = rset4.getObject(1).toString();
+                        
+                        com.lowagie.text.HeaderFooter headerFoter = new com.lowagie.text.HeaderFooter(new Phrase(""+compName+""),false);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 14, Font.BOLDITALIC,java.awt.Color.blue)));
+                        headerFoter.setAlignment(com.lowagie.text.HeaderFooter.ALIGN_CENTER);
+                        headerFoter.setRight(5);
+                        docPdf.setHeader(headerFoter);
+                        
+                    } catch(java.sql.SQLException SqlExec) {
+                        
+                        javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), SqlExec.getMessage());
+                        
+                    }
+                    
+                    com.lowagie.text.HeaderFooter footer = new com.lowagie.text.HeaderFooter(new Phrase("Orders List - Page: "), true);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 12, Font.BOLDITALIC,java.awt.Color.blue));
+                    
+                    docPdf.setFooter(footer);
+                    
+                    
+                    docPdf.open();
+                    
+                    
+                    try {
+                        
+                        
+                        com.lowagie.text.pdf.PdfPTable table = new com.lowagie.text.pdf.PdfPTable(10);
+                        
+                        int headerwidths[] = {5, 10, 13, 10, 13, 10, 10, 10, 10, 10};
+                        
+                        table.setWidths(headerwidths);
+                        
+                        table.setWidthPercentage((100));
+                        table.getDefaultCell().setBorder(Rectangle.BOTTOM);
+                        
+                        table.getDefaultCell().setColspan(5);
+                        
+                        
+                        Phrase phrase; 
+                        
+                        
+                        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM);
+                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                        phrase=new Phrase("Items Ordered");
+                        table.addCell(phrase);
+                        
+                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+                        phrase = new Phrase("Printed On  :" +date , pFontHeader);
+                        table.addCell(phrase);
+                        
+                        String order_nuos=null;
+                        
+                        Statement sta=connectDB.createStatement();
+                        ResultSet rst=sta.executeQuery("select order_id from stock_orders where order_id='"+orders+"'");
+                        while(rst.next()){
+                        order_nuos=rst.getString(1);
+                        }
+                        
+                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                        table.getDefaultCell().setColspan(10);
+                        phrase=new Phrase(order_nuos, pFontHeader);
+                        table.addCell(phrase);
+                        table.getDefaultCell().setColspan(1);
+                        table.getDefaultCell().setBorder(PdfCell.TOP | PdfCell.LEFT | PdfCell.BOTTOM | PdfCell.RIGHT);
+                         phrase = new Phrase("Count",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Item Code",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Item Name",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Quantity",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Price",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Date Ordered",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Expected Delivery",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Supplier",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Ordered By",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        phrase = new Phrase("Total",pFontHeader);
+                        table.addCell(phrase);
+                        
+                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+                        
+                         table.getDefaultCell().setBackgroundColor(java.awt.Color.WHITE);
+                       
+                        try {
+                            Statement s=connectDB.createStatement();
+                            ResultSet r=s.executeQuery("SELECT  sum(price*quantity_ordered)  FROM stock_orders where order_id='"+orders+"' ");
+                            
+                            java.sql.Statement st = connectDB.createStatement();
+                            
+                            java.sql.ResultSet rset = st.executeQuery("SELECT ord.item_code, itm.item_name, quantity_ordered, price, date_ordered, expected_supply_date, "
+                                    + "s.supplier_names, ordered_by, ord.price*ord.quantity_ordered  FROM stock_orders ord, stock_items itm, stock_suppliers s where order_id='"+orders+"' "
+                                    + "and ord.item_code=itm.item_code and s.supplier_id=ord.supplier_id");
+                             int count=1;
+                            while (rset.next()) {
+                                
+                                table.getDefaultCell().setColspan(1);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_CENTER);
+                                table.getDefaultCell().setColspan(1);
+                                numberSeq += 1;
+                                
+                                phrase = new Phrase(""+count+"   ", pFontHeader1);
+                                table.addCell(phrase);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(1), "-"),pFontHeader1);
+                                
+                                table.addCell(phrase);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(2), "-"),pFontHeader1);
+                                
+                                table.addCell(phrase);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(3), "-"),pFontHeader1);
+                               table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(4), "-"),pFontHeader1);
+                                
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(5), "-"),pFontHeader1);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(6), "-"),pFontHeader1);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(7), "-"),pFontHeader1);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(8), "-"),pFontHeader1);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase = new Phrase(dbObject.getDBObject(rset.getObject(9), "-"),pFontHeader1);
+                                table.addCell(phrase);
+                                
+                                
+                                count++;
+                            }
+                            table.getDefaultCell().setColspan(10);
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            String gt=null;
+                            while(r.next()){
+                            gt=dbObject.getDBObject(r.getObject(1), "-");
+                            }
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+//                            table.getDefaultCell().setColspan(8);
+                            phrase=new Phrase("GRAND TOTAL: "+gt, pFontHeader1);
+                            table.addCell(phrase);
+//                            table.getDefaultCell().setColspan(2);
+//                            table.addCell(new Phrase(""));
+                            System.err.println("grand total");
+                             docPdf.add(table);
+                            
+                        } catch(java.sql.SQLException SqlExec) {
+                            
+                            javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), SqlExec.getMessage());
+                            
+                        }
+                        
+                      
+                    } catch(com.lowagie.text.BadElementException BadElExec) {
+                        
+                        javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), BadElExec.getMessage());
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(OrdersPdf.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } catch(java.io.FileNotFoundException fnfExec) {
+                    
+                    javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), fnfExec.getMessage());
+                    
+                }
+            } catch(com.lowagie.text.DocumentException lwDocexec) {
+                
+                javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), lwDocexec.getMessage());
+                
+            }
+            
+            docPdf.close();
+            
+            deskTop.open(tempFile);
+            
+            
+            
+        } catch(java.io.IOException IOexec) {
+            
+            javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), IOexec.getMessage());
+            
+        }
+        
+        
+        
+    }
+    
+    
+    public java.lang.Object[] getListofStaffNos() {
+        
+        java.lang.Object[] listofStaffNos = null;
+        
+        java.util.Vector listStaffNoVector = new java.util.Vector(1,1);
+        
+        
+        
+        listofStaffNos = listStaffNoVector.toArray();
+        System.out.println("Done list of Staff Nos ...");
+        return listofStaffNos;
+    }
+     
+    
+    
+    
+}
+
+
+
+
+
+
+
