@@ -5,14 +5,12 @@
  */
 package wagwaan.com;
 
-import java.lang.reflect.Field;
 import wagwaan.setup.StudentRegisterIntfr;
 import wagwaan.setup.LocationIntfr;
 import wagwaan.setup.StaffRegisterIntfr;
 import wagwaan.setup.UserRegIntfr;
 import wagwaan.setup.DepartmentsIntfr;
 import wagwaan.config.ConnectionDB;
-import wagwaan.setup.FeesSetupIntfr;
 import wagwaan.accounts.FeesPaymentsIntfr;
 import wagwaan.accounts.FeesPanel;
 import wagwaan.accounts.ExpectedIncomeDates;
@@ -28,6 +26,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import wagwaan.config.SQLHelper;
 import wagwaan.ops.PasswordResetting;
@@ -41,20 +40,17 @@ import wagwaan.stocks.StockRequestIntfr;
  */
 public class SysMain extends javax.swing.JFrame {
 private  Connection connectDB;
+private String h_name;
     /**
      * Creates new form SysMain
      */
     public SysMain() {
         connectDB =ConnectionDB.getInstance().getCon();
         initComponents();
-        initialize();
+    
     }
-    private void initialize(){
-    LoginScreen l=new LoginScreen(new javax.swing.JFrame(), true);
-//    lblusername.setText("USER NAME: "+l.userName);
-//    lblconn.setText("STATUS: "+l.conn);
-//    lblstat.setText("DB PATH: "+l.address);
-    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -113,9 +109,12 @@ private  Connection connectDB;
         jMenu7 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("PETVIN TECH.");
+        setTitle("LEGIT SYSTEM INC.");
         setIconImage( new ImageIcon(getClass().getResource("/wagwaan/img/new.png")).getImage()
         );
         setName("MainFRM"); // NOI18N
@@ -460,7 +459,7 @@ private  Connection connectDB;
 
         jMenu7.setText("Exams Results");
 
-        jMenuItem7.setText("Individual Report Card Generation");
+        jMenuItem7.setText("Individual Student Report Card Generation");
         jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem7ActionPerformed(evt);
@@ -468,7 +467,7 @@ private  Connection connectDB;
         });
         jMenu7.add(jMenuItem7);
 
-        jMenuItem3.setText("Overall Performance Per Class");
+        jMenuItem3.setText("Report Cards per Class");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -477,6 +476,26 @@ private  Connection connectDB;
         jMenu7.add(jMenuItem3);
 
         jMenu3.add(jMenu7);
+
+        jMenu8.setText("Suppliers");
+
+        jMenuItem11.setText("Active Suppliers");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem11);
+
+        jMenuItem12.setText("BlackListed Suppliers");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
+        jMenu8.add(jMenuItem12);
+
+        jMenu3.add(jMenu8);
 
         jMenuBar1.add(jMenu3);
 
@@ -766,13 +785,15 @@ int exit=JOptionPane.showConfirmDialog(null, "Are you sure you really want to ex
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        wagwaan.com.SingleReportCardDlg s=new wagwaan.com.SingleReportCardDlg(new javax.swing.JFrame(), true);
+        wagwaan.com.SingleReportCardPerStudentDlg s=new wagwaan.com.SingleReportCardPerStudentDlg(new javax.swing.JFrame(), true);
         s.setSize(400, 200);
         s.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        
+        wagwaan.com.SingleReportCardPerClassDlg s=new wagwaan.com.SingleReportCardPerClassDlg(new javax.swing.JFrame(), true);
+        s.setSize(400, 200);
+        s.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -795,6 +816,16 @@ int exit=JOptionPane.showConfirmDialog(null, "Are you sure you really want to ex
         p.setVisible(true);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        wagwaan.reports.ActiveSuppliersPdf a=new wagwaan.reports.ActiveSuppliersPdf();
+        a.ActiveSuppliersPdf(connectDB);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        wagwaan.reports.BlackListedSuppPdf b=new wagwaan.reports.BlackListedSuppPdf();
+        b.BlackListedSuppPdf(connectDB);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem analysispertermitm;
     private javax.swing.JMenuItem balperclassitm;
@@ -813,9 +844,12 @@ int exit=JOptionPane.showConfirmDialog(null, "Are you sure you really want to ex
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
+    private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

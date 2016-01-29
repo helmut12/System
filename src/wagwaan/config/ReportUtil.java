@@ -248,12 +248,17 @@ public class ReportUtil {
         byte[] imageData = null;
         String header = null;
         boolean enabled;
+        String web_url=null, header_h=null, phone_no=null;
         com.lowagie.text.Image logo = null;
-        ResultSet rset = SQLHelper.getResultset(connectDB, "select header_name,current_date,company_logo,enable_logo from pb_header");
+        ResultSet rset = SQLHelper.getResultset(connectDB, "select header_name,current_date,company_logo,enable_logo, web_address, "
+                + "header_html, phone_no from pb_header");
         while (rset.next()) {
             header = rset.getString(1);
             imageData = rset.getBytes(3);
             enabled = rset.getBoolean(4);
+            web_url=rset.getString(5);
+            header_h=rset.getString(6);
+            phone_no=rset.getString(7);
         }
         if (imageData != null) {
             logo = Image.getInstance(imageData);
@@ -263,11 +268,24 @@ public class ReportUtil {
         if (logo != null) {
             document.add(logo);
         }
-        Paragraph p = new Paragraph(header, FontFactory.getFont(FontFactory.HELVETICA, 10, Font.NORMAL));
-        p.setAlignment(Element.ALIGN_CENTER);
+        Paragraph p = new Paragraph(header, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL));
+        Paragraph z = new Paragraph(web_url, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL));
+        Paragraph x = new Paragraph(header_h, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL));
+        Paragraph y = new Paragraph(phone_no, FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL));
+        
+        p.setAlignment(Paragraph.ALIGN_CENTER);
         document.add(p);
-        addEmptyLine(new Paragraph(), 1);
-
+        z.setAlignment(Element.ALIGN_CENTER);
+        document.add(z);
+        x.setAlignment(Element.ALIGN_CENTER);
+        document.add(x);
+        y.setAlignment(Element.ALIGN_CENTER);
+        document.add(y);
+                
+        addEmptyLine(p, 1);
+        addEmptyLine(z, 1);
+        addEmptyLine(x, 1);
+        addEmptyLine(y, 1);
     }
 
     public static void addLeftTitlePage(Document document, Connection connectDB) throws SQLException, IOException, BadElementException, DocumentException {

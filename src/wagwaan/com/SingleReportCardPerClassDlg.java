@@ -14,12 +14,12 @@ import wagwaan.config.ConnectionDB;
  *
  * @author Helmut
  */
-public class SingleReportCardDlg extends javax.swing.JDialog {
+public class SingleReportCardPerClassDlg extends javax.swing.JDialog {
 Connection con;
     /**
      * Creates new form SingleReportCardDlg
      */
-    public SingleReportCardDlg(java.awt.Frame parent, boolean modal) {
+    public SingleReportCardPerClassDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         con=ConnectionDB.getInstance().getCon();
@@ -53,10 +53,6 @@ Connection con;
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -262,42 +258,6 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel2.add(jPanel1, gridBagConstraints);
 
-        jLabel1.setText("Select Student ID");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        jPanel2.add(jLabel1, gridBagConstraints);
-
-        jPanel3.setLayout(new java.awt.GridBagLayout());
-
-        jTextField1.setEditable(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel3.add(jTextField1, gridBagConstraints);
-
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        jPanel3.add(jButton1, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 2.0;
-        gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jPanel3, gridBagConstraints);
-
         jLabel3.setText("Select Term");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -371,7 +331,7 @@ Connection con;
 
     private void jSearchTable30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTable30MouseClicked
 //        jTable1.setValueAt(jSearchTable30.getValueAt(jSearchTable30.getSelectedRow(), 0), jTable1.getSelectedRow(), 0);
-        jTextField1.setText(jSearchTable30.getValueAt(jSearchTable30.getSelectedRow(), 0).toString());
+//        jTextField1.setText(jSearchTable30.getValueAt(jSearchTable30.getSelectedRow(), 0).toString());
         jSearchDialog29.dispose();
     }//GEN-LAST:event_jSearchTable30MouseClicked
 
@@ -379,34 +339,27 @@ Connection con;
         jSearchDialog29.dispose();
     }//GEN-LAST:event_jButton530ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AMSUtility.showSearchDialog(jTextField1, jSearchDialog29);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        wagwaan.reports.IndividualReportCardPdf in=new wagwaan.reports.IndividualReportCardPdf();
-        in.IndividualReportCardPdf(con, String.valueOf(jTextField1.getText()), String.valueOf(jTextField2.getText()), String.valueOf(jComboBox1.getSelectedItem()));
+        wagwaan.reports.IndReportCardPerClassPdf in=new wagwaan.reports.IndReportCardPerClassPdf();
+        in.IndReportCardPerClassPdf(con, String.valueOf(jTextField2.getText()), String.valueOf(jComboBox1.getSelectedItem()));
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton529;
     private javax.swing.JButton jButton530;
     private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JDialog jSearchDialog28;
     private javax.swing.JDialog jSearchDialog29;
     private javax.swing.JPanel jSearchPanel29;
@@ -415,7 +368,6 @@ Connection con;
     private javax.swing.JScrollPane jSearchScrollPane30;
     private javax.swing.JTable jSearchTable29;
     private javax.swing.JTable jSearchTable30;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField1139;
     private javax.swing.JTextField jTextField1140;
     private javax.swing.JTextField jTextField2;
