@@ -325,18 +325,18 @@ private final Connection connectDB;
                     System.err.println("Duration is "+duration);
             if(duration<=7 && duration>0){
                 javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "You have "+duration+" days remaining to use the system. \n"
-                        + "Please contact Petvin Technologies to subscribe for a new license", "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
+                        + "Please contact Legit Systems Inc. Management to subscribe for a new license", "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
                 proceedToLogin();
             }
             else if(duration==0){
                 javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Today is your last day to use the system. \n"
-                        + "Please contact Petvin Technologies to subscribe for a new license", "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
+                        + "Please contact Legit Systems Inc. Management to subscribe for a new license", "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
                 proceedToLogin();
             }
             
             else if (duration<0) {
 //                logger.severe("Expired License");
-                javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Petvin Tech  Licence period expired. \n Please contact Petvin Technologies."
+                javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Legit Systems Inc.  Licence period expired. \n Please contact Legit Systems Inc. Management."
                 , "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
             }
@@ -345,12 +345,12 @@ private final Connection connectDB;
             }
             
             } catch (java.io.FileNotFoundException fnf) {
-            javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Petvin Technologies License Unvavailable! \n" + fnf.getMessage()
+            javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Legit Systems Inc.  License Unvavailable! \n" + fnf.getMessage()
                     , "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
 
         } catch (java.io.IOException ioEx) {
-            javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Error in Reading Petvin Tech License! \n" + ioEx.getMessage()
+            javax.swing.JOptionPane.showMessageDialog(new java.awt.Frame(), "Error in Reading Legit Systems Inc. License! \n" + ioEx.getMessage()
             , "Attention!!!", JOptionPane.INFORMATION_MESSAGE);
             System.exit(0);
             
