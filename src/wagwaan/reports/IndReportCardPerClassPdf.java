@@ -10,8 +10,7 @@
  */
 package wagwaan.reports;
 
-import com.lowagie.text.BadElementException;
-import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
 import com.lowagie.text.Font;
 import com.lowagie.text.FontFactory;
 import com.lowagie.text.PageSize;
@@ -19,9 +18,11 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfCell;
 import java.awt.Desktop;
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import wagwaan.config.AMSUtility;
@@ -35,7 +36,7 @@ public class IndReportCardPerClassPdf implements Runnable{
     
     int numberSeq = 0;
     
-    public static java.sql.Connection connectDB = null;
+    public  java.sql.Connection connectDB = null;
     
     public java.lang.String dbUserName = null;
     
@@ -50,10 +51,6 @@ public class IndReportCardPerClassPdf implements Runnable{
     com.lowagie.text.Font pFontHeaderN = FontFactory.getFont(FontFactory.TIMES_ROMAN, 12, Font.NORMAL);
     
    
-    java.lang.Runtime rtThreadSample = java.lang.Runtime.getRuntime();
-    
-    java.lang.Process prThread;
-    AMSUtility label = new AMSUtility();
     private String term_id, curr_class;
     public void IndReportCardPerClassPdf(java.sql.Connection connDb, String term, String daro) {
         
@@ -74,6 +71,7 @@ public class IndReportCardPerClassPdf implements Runnable{
     }
     
     
+    @Override
     public void run() {
         
         System.out.println("System has entered running mode");
@@ -115,151 +113,136 @@ public class IndReportCardPerClassPdf implements Runnable{
         
     }
     
-    public void generatePdf() {
-       
-        try {
+    private void generatePdf() {
             
-            java.io.File tempFile = java.io.File.createTempFile("REP"+label.getDateLable()+"_", ".pdf");
-            
-            tempFile.deleteOnExit();
-            
-            java.lang.Runtime rt = java.lang.Runtime.getRuntime();
-            
-            
-            com.lowagie.text.Document docPdf = new com.lowagie.text.Document(PageSize.A4.rotate());
-            
-            try {
-                
-                try {
-                    
-                    com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
-                    
-                    
-                    String compName = null;
-                    String date = null;
-                    try {
-        
-                        java.sql.Statement st4 = connectDB.createStatement();
-                        
-        
-                        java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
-        
-                        while(rset4.next()){
-                            date = rset4.getObject(1).toString();
-                        }
-                        
-                        com.lowagie.text.HeaderFooter headerFoter = new com.lowagie.text.HeaderFooter(new Phrase(" "),false);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 14, Font.BOLDITALIC,java.awt.Color.blue)));
-                        headerFoter.setAlignment(com.lowagie.text.HeaderFooter.ALIGN_CENTER);
-                        
-                        headerFoter.setRight(5);
-                        docPdf.setHeader(headerFoter);
-                        
-                    } catch(java.sql.SQLException SqlExec) {
-                        System.err.println(SqlExec);
-                        javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), SqlExec.getMessage());
-                        
-                    }
-                    
-                    com.lowagie.text.HeaderFooter footer = new com.lowagie.text.HeaderFooter(new Phrase("Student Report Card - Page: "), true);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 12, Font.BOLDITALIC,java.awt.Color.blue));
-                    
-                    docPdf.setFooter(footer);
-                    
-                    
-                    docPdf.open();
-                    
-                    ReportUtil.addCenteredTitlePage(docPdf, connectDB);
                     try {
                         
+                        java.io.File tempFile = java.io.File.createTempFile("REP"+AMSUtility.getDateLable()+"_", ".pdf");
+                        tempFile.deleteOnExit();
                         
-                        com.lowagie.text.pdf.PdfPTable table = new com.lowagie.text.pdf.PdfPTable(5);
+                        com.lowagie.text.Document docPdf = new com.lowagie.text.Document(PageSize.A4.rotate());
+                        com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
                         
-                        int headerwidths[] = {20, 20, 20, 20, 20};
-                        
-                        table.setWidths(headerwidths);
-                        
-                        table.setWidthPercentage((100));
-                        table.getDefaultCell().setBorder(Rectangle.BOTTOM);
-                        
-                        table.getDefaultCell().setColspan(5);
-                        
-                        
-                        Phrase phrase; 
-                        
-                        
-                        java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM);
-                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_CENTER);
-                        phrase=new Phrase("REPORT CARD", pFontHeaderLARGE);
-                        table.addCell(phrase);
-                        
-                        
-                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
-                        phrase = new Phrase("PRINTED ON  :" +date , pFontHeader);
-                        table.addCell(phrase);
+                        String date = null;
                         try {
-                            String student_id=null;
-                            Statement student=connectDB.createStatement();
-                            ResultSet students=student.executeQuery("select distinct(re.student_id) from student_Registration s, student_results re where re.student_id=s.student_id and term='"+term_id+"' and current_class='"+curr_class+"'");
-                        
-                        while(students.next()){
-                            student_id=students.getString(1);
-                        Statement sta=connectDB.createStatement();
-                        ResultSet rst=sta.executeQuery("select distinct(re.student_id), UPPER(first_name||' '||middle_name||' '||last_name) as stu_names, current_class, term "
-                                + "from student_Registration s, student_results re where re.student_id=s.student_id and term='"+term_id+"' and current_class='"+curr_class+"' "
-                                + " and re.student_id='"+student_id+"'");
-                        while(rst.next()){
-                            table.getDefaultCell().setColspan(3);
-                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
                             
-                            phrase=new Phrase("STUDENT ID: "+dbObject.getDBObject(rst.getObject(1), "-"), pFontHeader);
-                            table.addCell(phrase);
+                            java.sql.Statement st4 = connectDB.createStatement();
                             
-                            table.getDefaultCell().setColspan(2);
-                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                            phrase=new Phrase("NAMES: "+dbObject.getDBObject(rst.getObject(2), "-"), pFontHeader);
-                            table.addCell(phrase);
                             
-                            table.getDefaultCell().setColspan(3);
-                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                            phrase=new Phrase("CLASS: "+dbObject.getDBObject(rst.getObject(3), "-"), pFontHeader);
-                            table.addCell(phrase);
+                            java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
                             
-                            table.getDefaultCell().setColspan(2);
-                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                            phrase=new Phrase("TERM ID: "+dbObject.getDBObject(rst.getObject(4), "-"), pFontHeader);
-                            table.addCell(phrase);
+                            while(rset4.next()){
+                                date = rset4.getObject(1).toString();
+                            }
+                            
+                            com.lowagie.text.HeaderFooter headerFoter = new com.lowagie.text.HeaderFooter(new Phrase(" "),false);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 14, Font.BOLDITALIC,java.awt.Color.blue)));
+                            headerFoter.setAlignment(com.lowagie.text.HeaderFooter.ALIGN_CENTER);
+                            
+                            headerFoter.setRight(5);
+                            docPdf.setHeader(headerFoter);
+                            
+                        } catch(java.sql.SQLException SqlExec) {
+                            System.err.println(SqlExec);
+                            javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), SqlExec.getMessage());
+                            
                         }
                         
-                        table.getDefaultCell().setColspan(5);
-                        phrase=new Phrase(" ");
-                        table.addCell(phrase);
+                        com.lowagie.text.HeaderFooter footer = new com.lowagie.text.HeaderFooter(new Phrase("Student Report Card - Page: "), true);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 12, Font.BOLDITALIC,java.awt.Color.blue));
                         
-                        table.getDefaultCell().setColspan(1);
-                        table.getDefaultCell().setBorder(PdfCell.TOP | PdfCell.LEFT | PdfCell.BOTTOM | PdfCell.RIGHT);
+                        docPdf.setFooter(footer);
                         
-                         phrase = new Phrase("SUBJECT",pFontHeader);
-                        table.addCell(phrase);
                         
-                        phrase = new Phrase("CAT 1 (OUT OF 50)",pFontHeader);
-                        table.addCell(phrase);
+                        docPdf.open();
                         
-                        phrase = new Phrase("CAT II (OUT OF 50)",pFontHeader);
-                        table.addCell(phrase);
+                        Statement student=connectDB.createStatement();
+                        ResultSet students=student.executeQuery("select distinct(re.student_id) from student_Registration s, student_results re where re.student_id=s.student_id and term='"+term_id+"' and current_class='"+curr_class+"'");
                         
-                        phrase = new Phrase("MAIN EXAM (OUT OF 100)",pFontHeader);
-                        table.addCell(phrase);
-                        
-                        phrase = new Phrase("AVERAGE",pFontHeader);
-                        table.addCell(phrase);
-                        
-                        table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
-                        
-                         table.getDefaultCell().setBackgroundColor(java.awt.Color.WHITE);
-                          Statement s=connectDB.createStatement();
+                        for(String student_id : getAllStudent()){
+                            
+                            ReportUtil.addCenteredTitlePage(docPdf, connectDB);
+                            com.lowagie.text.pdf.PdfPTable table = new com.lowagie.text.pdf.PdfPTable(5);
+                            
+                            int headerwidths[] = {20, 20, 20, 20, 20};
+                            
+                            table.setWidths(headerwidths);
+                            
+                            table.setWidthPercentage((100));
+                            table.getDefaultCell().setBorder(Rectangle.BOTTOM);
+                            
+                            table.getDefaultCell().setColspan(5);
+                            
+                            
+                            Phrase phrase;
+                            
+                            
+                            java.text.DateFormat dateFormat = java.text.DateFormat.getDateInstance(java.text.DateFormat.MEDIUM);
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_CENTER);
+                            phrase=new Phrase("REPORT CARD", pFontHeaderLARGE);
+                            table.addCell(phrase);
+                            
+                            
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+                            phrase = new Phrase("PRINTED ON  :" +date , pFontHeader);
+                            table.addCell(phrase);
+                             
+                            Statement sta=connectDB.createStatement();
+                            ResultSet rst=sta.executeQuery("select distinct(re.student_id), UPPER(first_name||' '||middle_name||' '||last_name) as stu_names, current_class, term "
+                                    + "from student_Registration s, student_results re where re.student_id=s.student_id and term='"+term_id+"' and current_class='"+curr_class+"' "
+                                    + " and re.student_id='"+student_id+"'");
+                            while(rst.next()){
+                                table.getDefaultCell().setColspan(3);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                
+                                phrase=new Phrase("STUDENT ID: "+dbObject.getDBObject(rst.getObject(1), "-"), pFontHeader);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setColspan(2);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase=new Phrase("NAMES: "+dbObject.getDBObject(rst.getObject(2), "-"), pFontHeader);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setColspan(3);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase=new Phrase("CLASS: "+dbObject.getDBObject(rst.getObject(3), "-"), pFontHeader);
+                                table.addCell(phrase);
+                                
+                                table.getDefaultCell().setColspan(2);
+                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                                phrase=new Phrase("TERM ID: "+dbObject.getDBObject(rst.getObject(4), "-"), pFontHeader);
+                                table.addCell(phrase);
+                            }
+                            
+                            table.getDefaultCell().setColspan(5);
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            table.getDefaultCell().setColspan(1);
+                            table.getDefaultCell().setBorder(PdfCell.TOP | PdfCell.LEFT | PdfCell.BOTTOM | PdfCell.RIGHT);
+                            
+                            phrase = new Phrase("SUBJECT",pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase = new Phrase("CAT 1 (OUT OF 50)",pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase = new Phrase("CAT II (OUT OF 50)",pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase = new Phrase("MAIN EXAM (OUT OF 100)",pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase = new Phrase("AVERAGE",pFontHeader);
+                            table.addCell(phrase);
+                            
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+                            
+                            table.getDefaultCell().setBackgroundColor(java.awt.Color.WHITE);
+                            Statement s=connectDB.createStatement();
                             java.sql.Statement st = connectDB.createStatement();
                             
-                         
-                        
-                         
+                            
+                            
+                            
                             System.out.println("its okay upto here");
                             java.sql.ResultSet length = s.executeQuery("select count(DISTINCT(subject_names)) from subjects s, student_results re where s.subject_id=re.subject_id "
                                     + "and term='"+term_id+"' and current_class='"+curr_class+"' and student_id='"+student_id+"'");
@@ -344,142 +327,115 @@ public class IndReportCardPerClassPdf implements Runnable{
                                 System.err.println("i is "+i);
                                 
                                 System.err.println("I for get row()-1 should be 0 "+i);
-                                    data [i]=average;
-                                    System.err.println("Data["+i+"] is "+data[i]);
+                                data [i]=average;
+                                System.err.println("Data["+i+"] is "+data[i]);
                             }
                             
 //                                }
-                                System.err.println("final part is here");
-                                float x=0;
-                                for(int i=0;i<data.length;i++){
-                                    x+=data[i];
-                                    System.out.println("X is "+x);
-                                }
-                                
-                                table.getDefaultCell().setColspan(5);
-                                table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
-                                phrase=new Phrase("TOTAL MARKS: "+(int)x+"/"+overall_marks, pFontHeaderLARGE);
-                                table.addCell(phrase);
-                                Statement totstu=connectDB.createStatement();
-                                int total_students=0;
-                                ResultSet totstudents=totstu.executeQuery("select count(distinct(student_id)) as total_Students   from student_results "
-                                        + "where term='"+term_id+"' and current_class='"+curr_class+"'");
-                                while(totstudents.next()){
-                                    total_students=totstudents.getInt(1);
-                                }
+                            System.err.println("final part is here");
+                            float x=0;
+                            for(int i=0;i<data.length;i++){
+                                x+=data[i];
+                                System.out.println("X is "+x);
+                            }
+                            
+                            table.getDefaultCell().setColspan(5);
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_RIGHT);
+                            phrase=new Phrase("TOTAL MARKS: "+(int)x+"/"+overall_marks, pFontHeaderLARGE);
+                            table.addCell(phrase);
+                            Statement totstu=connectDB.createStatement();
+                            int total_students=0;
+                            ResultSet totstudents=totstu.executeQuery("select count(distinct(student_id)) as total_Students   from student_results "
+                                    + "where term='"+term_id+"' and current_class='"+curr_class+"'");
+                            while(totstudents.next()){
+                                total_students=totstudents.getInt(1);
+                            }
 //                                String position=null;
-                                Statement poss=connectDB.createStatement();
-                                ResultSet pos=poss.executeQuery("select row_number() over() as rownum, student_id, sum(score)/2 as total_score from student_results "
-                                        + "where exam_level_id in (select level_id from exam_levels) and current_class='"+curr_class+"' and term='"+term_id+"' "
-                                        + " group by student_id order by 3 desc");
-                                while(pos.next()){
+                            Statement poss=connectDB.createStatement();
+                            ResultSet pos=poss.executeQuery("select row_number() over() as rownum, student_id, sum(score)/2 as total_score from student_results "
+                                    + "where exam_level_id in (select level_id from exam_levels) and current_class='"+curr_class+"' and term='"+term_id+"' "
+                                    + " group by student_id order by 3 desc");
+                            while(pos.next()){
                                 if(student_id.equals(pos.getString(2))){
                                     table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_CENTER);
                                     phrase=new Phrase("POSITION "+pos.getString(1)+" OUT OF "+total_students, pFontHeaderLARGE);
                                     table.addCell(phrase);
                                 }
                                 
-                                }
-                                 table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                                    phrase=new Phrase("CLASS TEACHER'S COMMENTS: ", pFontHeader);
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                                    phrase=new Phrase("CLASS TEACHER'S SIGNATURE: ", pFontHeader);
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                                    phrase=new Phrase("HEADTEACHER'S/PRINCIPAL'S COMMENTS: ", pFontHeader);
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
-                                    phrase=new Phrase("HEADTEACHER'S/PRINCIPAL'S SIGNATURE: ", pFontHeader);
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                                    phrase=new Phrase(" ");
-                                    table.addCell(phrase);
-                                    
-                        }
-                                    
-                                    docPdf.add(table);
+                            }
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                            phrase=new Phrase("CLASS TEACHER'S COMMENTS: ", pFontHeader);
+                            table.addCell(phrase);
                             
-                        } catch(java.sql.SQLException SqlExec) {
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
                             
-                            javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), SqlExec.getMessage());
-                            System.err.println(SqlExec);
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                            phrase=new Phrase("CLASS TEACHER'S SIGNATURE: ", pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                            phrase=new Phrase("HEADTEACHER'S/PRINCIPAL'S COMMENTS: ", pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            table.getDefaultCell().setHorizontalAlignment(PdfCell.ALIGN_LEFT);
+                            phrase=new Phrase("HEADTEACHER'S/PRINCIPAL'S SIGNATURE: ", pFontHeader);
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            phrase=new Phrase(" ");
+                            table.addCell(phrase);
+                            
+                            docPdf.add(table);
+                            
+                            docPdf.newPage();
+                            
                         }
                         
-                      
-                    } catch(com.lowagie.text.BadElementException BadElExec) {
                         
-                        javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), BadElExec.getMessage());
+                        docPdf.close();
+                        
+                        deskTop.open(tempFile);
+                        
+                        
+                    } catch(IOException | DocumentException | SQLException ex) {
+                        Logger.getLogger(IndReportCardPerClassPdf.class.getName()).log(Level.SEVERE, null,ex);
                         
                     }
-                    
-                } catch(java.io.FileNotFoundException fnfExec) {
-                    
-                    javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), fnfExec.getMessage());
-                    
-                } catch (SQLException ex) {
-                    Logger.getLogger(IndividualReportCardPdf.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (BadElementException ex) {
-                    Logger.getLogger(IndividualReportCardPdf.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            } catch(com.lowagie.text.DocumentException lwDocexec) {
-                
-                javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), lwDocexec.getMessage());
-                
-            }
-            
-            docPdf.close();
-            
-            deskTop.open(tempFile);
-            
-            
-            
-        } catch(java.io.IOException IOexec) {
-            
-            javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), IOexec.getMessage());
-            
-        }
-        
         
         
     }
     
-    
-    public java.lang.Object[] getListofStaffNos() {
-        
-        java.lang.Object[] listofStaffNos = null;
-        
-        java.util.Vector listStaffNoVector = new java.util.Vector(1,1);
-        
-        
-        
-        listofStaffNos = listStaffNoVector.toArray();
-        System.out.println("Done list of Staff Nos ...");
-        return listofStaffNos;
+    private  ArrayList<String> getAllStudent(){
+        try {
+            ArrayList<String> list=new ArrayList<>();
+            Statement student=connectDB.createStatement();
+            ResultSet students=student.executeQuery("select distinct(re.student_id) from student_Registration s, student_results re where re.student_id=s.student_id and term='"+term_id+"' and current_class='"+curr_class+"'");
+            while(students.next()){
+                list.add(students.getString(1));
+            }
+            return list;
+        } catch (SQLException ex) {
+            Logger.getLogger(IndReportCardPerClassPdf.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 }
 
