@@ -22,7 +22,11 @@ public class XmlSerializer {
     
     java.lang.Object[] tableColumns = null;
     
-    /** Creates a new instance of XmlSerializer */
+    /** Creates a new instance of XmlSerializer
+     * @param xmlTable2Export
+     * @param xmlioStream
+     * @param refDtdString
+     * @param serializedFileName */
     public XmlSerializer(javax.swing.JTable xmlTable2Export, java.io.BufferedOutputStream xmlioStream, java.lang.String refDtdString, java.lang.String serializedFileName) {
         
         xmlIOStream = xmlioStream;

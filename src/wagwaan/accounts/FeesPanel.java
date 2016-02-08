@@ -15,9 +15,11 @@ import java.sql.*;
  * @author Helmut
  */
 public class FeesPanel extends javax.swing.JDialog {
-private Connection con;
+private final Connection con;
     /**
      * Creates new form FeesPanel
+     * @param parent
+     * @param modal
      */
     public FeesPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

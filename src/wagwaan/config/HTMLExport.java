@@ -24,7 +24,9 @@ public class HTMLExport {
     
     java.lang.String refDocString = null;
     
-    /** Creates a new instance of HTMLExport */
+    /** Creates a new instance of HTMLExport
+     * @param table2Export
+     * @param tableName */
     public HTMLExport(javax.swing.JTable table2Export, java.lang.String tableName) {
         
         tableName2Export = table2Export;

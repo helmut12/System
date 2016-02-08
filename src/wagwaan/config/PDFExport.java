@@ -27,7 +27,9 @@ public class PDFExport {
     
     java.lang.String refDocString = null;
     
-    /** Creates a new instance of PDFExeport */
+    /** Creates a new instance of PDFExeport
+     * @param table2Export
+     * @param tableName */
     public PDFExport(javax.swing.JTable table2Export, java.lang.String tableName) {
         
         tableName2Export = table2Export;

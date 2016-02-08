@@ -31,7 +31,9 @@ public class StudentRegDates extends javax.swing.JDialog {
     javax.swing.JSpinner endDateSpinner = null;
      org.netbeans.lib.sql.pool.PooledConnectionSource pConnDB = null;
    
-    /** Creates new form DatePanel  Frame,modal,report no,*/
+    /** Creates new form DatePanel  Frame,modal,report no
+     * @param parent,
+     * @param modal*/
     public StudentRegDates(java.awt.Frame parent,  boolean modal) {
         
         super(parent, modal);
@@ -145,21 +147,6 @@ public class StudentRegDates extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_closeDialog
     
-    /**
-     * @param args the command line arguments
-     */
-   
-    public java.util.Vector getBeginEndDates() {
-        
-        dateStartEnd = new java.util.Vector(1,1);
-        
-        dateStartEnd.addElement(beginDateSpinner.getValue().toString());
-        
-        dateStartEnd.addElement(endDateSpinner.getValue().toString());
-        
-        return dateStartEnd;
-        
-    }
     
     public void getReport() {
         

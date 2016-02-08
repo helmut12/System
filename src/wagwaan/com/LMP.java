@@ -111,9 +111,6 @@ public class LMP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

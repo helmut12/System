@@ -15,6 +15,8 @@ public class ExpDate extends javax.swing.JDialog {
 
     /**
      * Creates new form ExpDate
+     * @param parent
+     * @param modal
      */
     public ExpDate(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

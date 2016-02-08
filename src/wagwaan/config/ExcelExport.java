@@ -23,6 +23,8 @@ public class ExcelExport implements java.lang.Runnable {
 
     /**
      * Creates a new instance of ExcelExport
+     * @param excelTable2Export
+     * @param name2ExcelTable
      */
     public ExcelExport(javax.swing.JTable excelTable2Export, java.lang.String name2ExcelTable) {
 

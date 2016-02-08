@@ -17,6 +17,8 @@ public class PaidUpvsExpectedPerItmPerTermDlg extends javax.swing.JDialog {
 Connection con;
     /**
      * Creates new form PaidUpvsExpectedIncomePerPayablePerTermDlg
+     * @param parent
+     * @param modal
      */
     public PaidUpvsExpectedPerItmPerTermDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

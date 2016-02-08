@@ -40,6 +40,7 @@ public class ComboBoxModel {
      * @param comboDBDataQuery : The SQL string conveying the query to be sent to the database to return the combo box data.
      *
      * It return the javax.swing.DefaultComboBoxModel to the calling JComboBox.
+     * @return 
      */    
     public static javax.swing.DefaultComboBoxModel ComboBoxModel(java.sql.Connection connectDB, java.lang.String comboDBDataQuery){
       

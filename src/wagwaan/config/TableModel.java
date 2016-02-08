@@ -40,7 +40,10 @@ public class TableModel {
 
     java.awt.GridBagConstraints gridBagConstraints;
 
-    /** Creates a new instance of TableModel */
+    /** Creates a new instance of TableModel
+     * @param connectDB
+     * @param queryString
+     * @return  */
 /*    public TableModel(java.sql.Connection connDb, org.netbeans.lib.sql.pool.PooledConnectionSource pconnDB) {
 
         connectDB = connDb;

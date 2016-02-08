@@ -15,9 +15,11 @@ import java.sql.*;
  * @author Helmut
  */
 public class ReceivingPanel extends javax.swing.JDialog {
-private Connection con;
+private final Connection con;
     /**
      * Creates new form ReceivingPanel
+     * @param parent
+     * @param modal
      */
     public ReceivingPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

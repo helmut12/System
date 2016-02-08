@@ -18,6 +18,8 @@ public class SingleReportCardPerClassDlg extends javax.swing.JDialog {
 Connection con;
     /**
      * Creates new form SingleReportCardDlg
+     * @param parent
+     * @param modal
      */
     public SingleReportCardPerClassDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

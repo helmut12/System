@@ -14,6 +14,8 @@ public class DeletionsDlg extends javax.swing.JDialog {
 
     /**
      * Creates new form DeletionsDlg
+     * @param parent
+     * @param modal
      */
     public DeletionsDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

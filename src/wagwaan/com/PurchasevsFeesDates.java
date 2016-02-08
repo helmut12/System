@@ -14,6 +14,8 @@ public class PurchasevsFeesDates extends javax.swing.JDialog {
 Connection con;
     /**
      * Creates new form PurchasevsFeesDates
+     * @param parent
+     * @param modal
      */
     public PurchasevsFeesDates(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -100,9 +102,6 @@ Connection con;
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

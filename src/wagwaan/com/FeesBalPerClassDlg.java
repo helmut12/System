@@ -17,6 +17,8 @@ public class FeesBalPerClassDlg extends javax.swing.JDialog {
 Connection con;
     /**
      * Creates new form FeesBalPerClassDlg
+     * @param parent
+     * @param modal
      */
     public FeesBalPerClassDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

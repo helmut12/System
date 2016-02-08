@@ -18,6 +18,8 @@ public class ExternalPaymentDlg extends javax.swing.JDialog {
     Connection con;
     /**
      * Creates new form ExternalPaymentDlg
+     * @param parent
+     * @param modal
      */
     public ExternalPaymentDlg(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

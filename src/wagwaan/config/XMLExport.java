@@ -26,7 +26,9 @@ public class XMLExport implements java.lang.Runnable {
     
     javax.swing.JTable export2XMLTable = null;
     
-    /** Creates a new instance of XMLExport */
+    /** Creates a new instance of XMLExport
+     * @param xmlTable2Export
+     * @param name2XmlTable */
     public XMLExport(javax.swing.JTable xmlTable2Export, java.lang.String name2XmlTable) {
         
         tableName = name2XmlTable;

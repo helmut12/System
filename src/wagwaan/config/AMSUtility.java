@@ -69,6 +69,8 @@ import javax.swing.table.DefaultTableModel;
 public class AMSUtility {
     /**
      * Return the Selected Gender from a group of buttons
+     * @param bg
+     * @return 
      */
     public static String getSelectedGender(ButtonGroup bg){
         String gender=null;
@@ -165,6 +167,11 @@ public class AMSUtility {
     }
     /**
      * 
+     * @param connectDB
+     * @param SQLQuery
+     * @param header
+     * @param canEdit
+     * @return 
      */
     public static DefaultTableModel SQLTableModel(Connection connectDB,String SQLQuery,String[] header,boolean[] canEdit){
         try {
@@ -235,7 +242,9 @@ public class AMSUtility {
      *  @param connectDB 
      *  @param columnHeader 
      *  @param classTypes 
+     * @param canEdit 
      *  @param SQLQuery 
+     * @return  
      */
     public static DefaultTableModel getJDBCTableModel(Connection connectDB, String columnHeader[],Class[] classTypes,boolean[] canEdit,String SQLQuery) {
         
@@ -293,6 +302,9 @@ public class AMSUtility {
     }
     /**
      * Rendering of Combobox in Jtable
+     * @param connectDB
+     * @param SQLQuery
+     * @return 
      * @
      */
     public static DefaultCellEditor renderComboBox(Connection connectDB,String SQLQuery){
@@ -480,10 +492,8 @@ public class AMSUtility {
             pstmt.setString(1, ipAddr);
             pstmt.setString(2, hostname);
             pstmt.executeUpdate();
-        } catch (UnknownHostException ex) {
+        } catch (UnknownHostException | SQLException ex) {
           AMSLogger.getInstance().getLogger().severe(ex.getMessage());
-        } catch (SQLException ex) {
-             AMSLogger.getInstance().getLogger().severe(ex.getMessage());
         }
     
 
@@ -501,7 +511,9 @@ public class AMSUtility {
         return noHTMLString;
     }
    
-   /**Key listener to numeric only*/
+   /**Key listener to numeric on
+     * @param evt
+     */
    public static void numListener(java.awt.event.KeyEvent evt) {                                     
         char c = evt.getKeyChar();
         if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
@@ -509,14 +521,19 @@ public class AMSUtility {
             evt.consume();
         }
     }
-   /**Retrieves only the whole number and discards the decimal from the double*/
+   /**Retrieves only the whole number and discards the decimal from the doubl
+     * @param obj
+     * @param obje
+     * @return */
    public static int getCastedDouble(Object obj){
         Double val=(Double)obj;
         BigDecimal big= new BigDecimal(val);
         
         return big.intValue();
     }
-   /**this method changes a string first letter to capital and the rest to lower case */
+   /**this method changes a string first letter to capital and the rest to lower case
+     * @param givenString
+     * @return  */
    public static String toTitleCase(String givenString) {
             String[] arr = givenString.split(" ");
             StringBuilder sb = new StringBuilder();
@@ -613,6 +630,9 @@ public class AMSUtility {
     
      /**
      * Method changes the System theme dynamically
+     * @param lnf
+     * @param themepack
+     * @param parent
      */
     public static void changeThemeByUrl(java.lang.String lnf, java.net.URL themepack,JFrame parent) {
         try {
@@ -630,13 +650,7 @@ public class AMSUtility {
             javax.swing.SwingUtilities.updateComponentTreeUI(parent);
             javax.swing.SwingUtilities.updateComponentTreeUI(parent.getRootPane());
            parent.repaint();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -655,13 +669,7 @@ public class AMSUtility {
             javax.swing.SwingUtilities.updateComponentTreeUI(parent);
             parent.repaint();
             javax.swing.SwingUtilities.updateComponentTreeUI(parent.getRootPane());
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -767,14 +775,14 @@ public class AMSUtility {
     public static void logMenuAccess(Connection connect,String menu,String appName){
         try {
             connect.setAutoCommit(false);
-            java.sql.PreparedStatement pstmtx = connect.prepareStatement("insert into pb_sys_usage values(?,?,?)");
-            pstmtx.setObject(1, menu);
-            pstmtx.setString(2, "Menu");
-            pstmtx.setString(3, appName);
-            pstmtx.executeUpdate();
-            connect.commit();
-            connect.setAutoCommit(true);
-            pstmtx.close();
+            try (java.sql.PreparedStatement pstmtx = connect.prepareStatement("insert into pb_sys_usage values(?,?,?)")) {
+                pstmtx.setObject(1, menu);
+                pstmtx.setString(2, "Menu");
+                pstmtx.setString(3, appName);
+                pstmtx.executeUpdate();
+                connect.commit();
+                connect.setAutoCommit(true);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(AMSUtility.class.getName()).log(Level.SEVERE, null, ex);
         }

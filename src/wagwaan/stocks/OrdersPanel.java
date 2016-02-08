@@ -15,9 +15,11 @@ import java.sql.*;
  * @author Helmut
  */
 public class OrdersPanel extends javax.swing.JDialog {
-    private Connection con;
+    private final Connection con;
     /**
      * Creates new form OrdersPanel
+     * @param parent
+     * @param modal
      */
     public OrdersPanel(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

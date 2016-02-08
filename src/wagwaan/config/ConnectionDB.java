@@ -60,11 +60,12 @@ private void dbConnection(){
         Properties credentials = new Properties();
         try
         {
-            credentials.load(new FileInputStream("Sys.properties"));
+            String connfile=System.getProperty("user.dir") + System.getProperty("file.separator") + "SYSPROP.properties";
+            credentials.load(new FileInputStream(connfile));
         }
         catch(IOException e)
         {
-            throw new SQLException("Can't read Sys,properties.");
+            throw new SQLException("Can't read SYSPROP,properties.");
         }
         Properties props = new Properties();
         props.setProperty("user", credentials.getProperty("username"));
@@ -75,6 +76,7 @@ private void dbConnection(){
         con = DriverManager.getConnection(url, props);
         if(con!=null){
             System.out.println("CONNECTION SUCCESSFUL");
+            
         }
         else{
             System.out.println("UNABLE TO CONNECT");
@@ -83,7 +85,7 @@ private void dbConnection(){
         catch(SQLException ex)
         {
           Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
-          JOptionPane.showMessageDialog(null, "Could not read the sys.properties file. \n Ensure the parameters in the props file are correct");
+          JOptionPane.showMessageDialog(null, "Could not read the SYSPROP.properties file. \n Ensure the parameters in the props file are correct");
           System.exit(0);
         }
     }

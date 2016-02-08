@@ -33,7 +33,9 @@ public class ExpectedIncomeDates extends javax.swing.JDialog {
     javax.swing.JSpinner endDateSpinner = null;
      org.netbeans.lib.sql.pool.PooledConnectionSource pConnDB = null;
    
-    /** Creates new form DatePanel  Frame,modal,report no,*/
+    /** Creates new form DatePanel  Frame,modal,report no
+     * @param parent,
+     * @param modal*/
     public ExpectedIncomeDates(java.awt.Frame parent,  boolean modal) {
         
         super(parent, modal);
@@ -273,7 +275,7 @@ public class ExpectedIncomeDates extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton521ActionPerformed
     
     /**
-     * @param args the command line arguments
+     * @return 
      */
    
     public java.util.Vector getBeginEndDates() {
