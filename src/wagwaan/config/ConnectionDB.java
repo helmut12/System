@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,46 +46,34 @@ public class ConnectionDB {
     }
     
 private void dbConnection(){
-    try
-    {
-        try
-        {
-            Class.forName("org.postgresql.Driver");
-        }
-        catch(ClassNotFoundException e)
-        {
-            throw new SQLException("Postgres database driver not found");
-        }
-        Properties credentials = new Properties();
-        try
-        {
-            String connfile=System.getProperty("user.dir") + System.getProperty("file.separator") + "SYSPROP.properties";
-            credentials.load(new FileInputStream(connfile));
-        }
-        catch(IOException e)
-        {
-            throw new SQLException("Can't read SYSPROP,properties.");
-        }
-        Properties props = new Properties();
-        props.setProperty("user", credentials.getProperty("username"));
-        props.setProperty("password", credentials.getProperty("password"));
-        
-        String url=(new StringBuilder()).append("jdbc:postgresql://").append(credentials.getProperty("host")).append(":").append(credentials.getProperty("port")).append("/").append(credentials.getProperty("database")).toString();
-        
-        con = DriverManager.getConnection(url, props);
-        if(con!=null){
-            System.out.println("CONNECTION SUCCESSFUL");
-            
-        }
-        else{
-            System.out.println("UNABLE TO CONNECT");
-        }
-    }
-        catch(SQLException ex)
-        {
+ 
+      try {
+//          Class.forName("org.postgresql.Driver");
+                Class.forName("org.postgresql.Driver");
+          Properties credentials = new Properties();
+          String connfile=System.getProperty("user.dir") + System.getProperty("file.separator") + "SYSPROP.properties";
+          credentials.load(new FileInputStream(connfile));
+          
+          Properties props = new Properties();
+          props.setProperty("user", credentials.getProperty("username"));
+          props.setProperty("password", credentials.getProperty("password"));
+          
+          String url=(new StringBuilder()).append("jdbc:postgresql://").append(credentials.getProperty("host")).append(":").append(credentials.getProperty("port")).append("/").append(credentials.getProperty("database")).toString();
+          System.err.println(url);
+          
+          con = DriverManager.getConnection(url, props);
+
+          if(con!=null){
+              System.out.println("CONNECTION SUCCESSFUL");
+          }
+          else{
+              System.out.println("UNABLE TO CONNECT");
+          }
+      } catch (ClassNotFoundException | SQLException ex) {
           Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
-          JOptionPane.showMessageDialog(null, "Could not read the SYSPROP.properties file. \n Ensure the parameters in the props file are correct");
-          System.exit(0);
-        }
+      } catch (IOException ex) {
+          Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
+      }
+         
     }
 }

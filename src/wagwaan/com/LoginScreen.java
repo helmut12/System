@@ -112,7 +112,6 @@ private final Connection connectDB;
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LOGIN");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImage(new ImageIcon(getClass().getResource("/wagwaan/img/new.png")).getImage());
         setResizable(false);
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(new java.awt.GridBagLayout());

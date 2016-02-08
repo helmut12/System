@@ -115,8 +115,7 @@ private String h_name;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("LEGIT SYSTEM INC.");
-        setIconImage( new ImageIcon(getClass().getResource("/wagwaan/img/new.png")).getImage()
-        );
+        setIconImage(new ImageIcon(getClass().getResource("/wagwaan/img/new.png")).getImage());
         setName("MainFRM"); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
