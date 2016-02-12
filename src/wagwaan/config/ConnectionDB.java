@@ -69,9 +69,7 @@ private void dbConnection(){
           else{
               System.out.println("UNABLE TO CONNECT");
           }
-      } catch (ClassNotFoundException | SQLException ex) {
-          Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (IOException ex) {
+      } catch (ClassNotFoundException | SQLException | IOException ex) {
           Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
       }
          
