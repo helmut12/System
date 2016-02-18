@@ -55,7 +55,7 @@ Connection con;
         jButton11 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new wagwaan.config.JTable(){
+        jTable1 = new javax.swing.JTable(){
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Object.class
             };
@@ -69,7 +69,6 @@ Connection con;
                 return canEdit [columnIndex];
             }
         };
-        jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -576,7 +575,7 @@ Connection con;
         if (this.jTextField111.getCaretPosition() > 3) {
             
         
-            jSearchTable.setModel(wagwaan.config.TableModel.createTableVectors(con, "select payable_item from payables where payable_item ilike '%"+jTextField111.getText()+"%'"));
+            jSearchTable.setModel(wagwaan.config.TableModel.createTableVectors(con, "select payable_item from payables where payable_item ilike '%"+jTextField111.getText()+"%' and payable_item not like '%transport%' "));
             jSearchScrollPane.setViewportView(jSearchTable);
             System.out.println("Cannot sort out");
 

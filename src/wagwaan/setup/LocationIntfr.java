@@ -75,552 +75,525 @@ private Connection connect;
         cardPanelController = new javax.swing.JPanel();
         edit = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        //jXTable2 = new wagwaan.config.JTable(){
-            jXTable2=new org.jdesktop.swingx.JXTable(){
-                Class[] types = new Class [] {
-                    java.lang.Object.class, java.lang.Object.class,java.lang.Object.class};
-                boolean[] canEdit = new boolean [] {false, false, true};
+        jXTable2 = new org.jdesktop.swingx.JXTable();
+        jPanel41 = new javax.swing.JPanel();
+        txtid = new javax.swing.JTextField();
+        searchButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        save = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jXTable1 = new org.jdesktop.swingx.JXTable();
 
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
+        jSearchDialog22.setModal(true);
+        jSearchDialog22.setUndecorated(true);
+        jSearchDialog22.getContentPane().setLayout(new java.awt.GridBagLayout());
 
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
+        jSearchPanel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jSearchPanel22.setLayout(new java.awt.GridBagLayout());
+
+        jTextField1132.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField1132CaretUpdate(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        jSearchPanel22.add(jTextField1132, gridBagConstraints);
+
+        jSearchTable22.setToolTipText("");
+        jSearchTable22.setShowHorizontalLines(false);
+        /*javax.swing.table.TableColumn column = null;
+
+        for (int i = 0; i < 4; i++) {
+
+            column = jSearchTable2.getColumnModel().getColumn(i);
+
+            if (i == 1) {
+
+                column.setPreferredWidth(400);
+                //sport column is bigger
+            } else {
+
+                column.setPreferredWidth(200);
+
+            }
+        }
+        */
+        jSearchTable22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSearchTable22MouseClicked(evt);
+            }
+        });
+        jSearchScrollPane22.setViewportView(jSearchTable22);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 20.0;
+        jSearchPanel22.add(jSearchScrollPane22, gridBagConstraints);
+
+        jButton522.setText("Close");
+        jButton522.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton522ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jSearchPanel22.add(jButton522, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jSearchDialog22.getContentPane().add(jSearchPanel22, gridBagConstraints);
+
+        jSearchDialog21.setModal(true);
+        jSearchDialog21.setUndecorated(true);
+        jSearchDialog21.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jSearchPanel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jSearchPanel21.setLayout(new java.awt.GridBagLayout());
+
+        jTextField1131.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField1131CaretUpdate(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        jSearchPanel21.add(jTextField1131, gridBagConstraints);
+
+        jSearchTable21.setToolTipText("");
+        jSearchTable21.setShowHorizontalLines(false);
+        /*javax.swing.table.TableColumn column = null;
+
+        for (int i = 0; i < 4; i++) {
+
+            column = jSearchTable2.getColumnModel().getColumn(i);
+
+            if (i == 1) {
+
+                column.setPreferredWidth(400);
+                //sport column is bigger
+            } else {
+
+                column.setPreferredWidth(200);
+
+            }
+        }
+        */
+        jSearchTable21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSearchTable21MouseClicked(evt);
+            }
+        });
+        jSearchScrollPane21.setViewportView(jSearchTable21);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 20.0;
+        jSearchPanel21.add(jSearchScrollPane21, gridBagConstraints);
+
+        jButton521.setText("Close");
+        jButton521.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton521ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jSearchPanel21.add(jButton521, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jSearchDialog21.getContentPane().add(jSearchPanel21, gridBagConstraints);
+
+        jSearchDialog23.setModal(true);
+        jSearchDialog23.setUndecorated(true);
+        jSearchDialog23.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jSearchPanel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jSearchPanel23.setLayout(new java.awt.GridBagLayout());
+
+        jTextField1133.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField1133CaretUpdate(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        jSearchPanel23.add(jTextField1133, gridBagConstraints);
+
+        jSearchTable23.setToolTipText("");
+        jSearchTable23.setShowHorizontalLines(false);
+        /*javax.swing.table.TableColumn column = null;
+
+        for (int i = 0; i < 4; i++) {
+
+            column = jSearchTable2.getColumnModel().getColumn(i);
+
+            if (i == 1) {
+
+                column.setPreferredWidth(400);
+                //sport column is bigger
+            } else {
+
+                column.setPreferredWidth(200);
+
+            }
+        }
+        */
+        jSearchTable23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jSearchTable23MouseClicked(evt);
+            }
+        });
+        jSearchScrollPane23.setViewportView(jSearchTable23);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 20.0;
+        jSearchPanel23.add(jSearchScrollPane23, gridBagConstraints);
+
+        jButton523.setText("Close");
+        jButton523.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton523ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jSearchPanel23.add(jButton523, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jSearchDialog23.getContentPane().add(jSearchPanel23, gridBagConstraints);
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("TRANSPORT LOCATION");
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        btnclose.setText("CLOSE");
+        btnclose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncloseActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(btnclose, gridBagConstraints);
+
+        btnreset.setText("RESET");
+        btnreset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnresetActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(btnreset, gridBagConstraints);
+
+        btnsave.setText("SAVE");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(btnsave, gridBagConstraints);
+
+        btnedit.setText("EDIT");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneditActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(btnedit, gridBagConstraints);
+
+        btnupdate.setText("UPDATE");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(btnupdate, gridBagConstraints);
+
+        jButton1.setText("REMOVE ROW");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(jButton1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 2.0;
+        jPanel1.add(jPanel2, gridBagConstraints);
+
+        cardPanelController.setLayout(new java.awt.CardLayout());
+
+        edit.setLayout(new java.awt.GridBagLayout());
+
+        jXTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "location ID", "Location Name", "Transport Fees"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true
             };
-            jXTable2 = new org.jdesktop.swingx.JXTable();
-            jPanel41 = new javax.swing.JPanel();
-            txtid = new javax.swing.JTextField();
-            searchButton1 = new javax.swing.JButton();
-            jLabel1 = new javax.swing.JLabel();
-            save = new javax.swing.JPanel();
-            jScrollPane1 = new javax.swing.JScrollPane();
-            jXTable1 = new org.jdesktop.swingx.JXTable(){
-                Class[] types = new Class [] {
-                    java.lang.Object.class, java.lang.Object.class,java.lang.Object.class};
-                boolean[] canEdit = new boolean [] {false, true, true};
 
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jXTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jXTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jXTable2);
 
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        edit.add(jScrollPane2, gridBagConstraints);
+
+        jPanel41.setLayout(new java.awt.GridBagLayout());
+
+        txtid.setEditable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        jPanel41.add(txtid, gridBagConstraints);
+
+        searchButton1.setToolTipText("Search");
+        searchButton1.setMaximumSize(new java.awt.Dimension(74, 53));
+        searchButton1.setMinimumSize(new java.awt.Dimension(20, 20));
+        searchButton1.setPreferredSize(new java.awt.Dimension(20, 20));
+        searchButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        searchButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchButton1ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        jPanel41.add(searchButton1, gridBagConstraints);
+
+        jLabel1.setText("SELECT THE CURRENT TERM ID");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jPanel41.add(jLabel1, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.weightx = 2.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
+        edit.add(jPanel41, gridBagConstraints);
+
+        cardPanelController.add(edit, "card2");
+
+        save.setLayout(new java.awt.GridBagLayout());
+
+        jXTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Term", "Location Name", "Transport Fees"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
-            jXTable1 = new org.jdesktop.swingx.JXTable();
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
 
-            jSearchDialog22.setModal(true);
-            jSearchDialog22.setUndecorated(true);
-            jSearchDialog22.getContentPane().setLayout(new java.awt.GridBagLayout());
-
-            jSearchPanel22.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            jSearchPanel22.setLayout(new java.awt.GridBagLayout());
-
-            jTextField1132.addCaretListener(new javax.swing.event.CaretListener() {
-                public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                    jTextField1132CaretUpdate(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-            jSearchPanel22.add(jTextField1132, gridBagConstraints);
-
-            jSearchTable22.setToolTipText("");
-            jSearchTable22.setShowHorizontalLines(false);
-            /*javax.swing.table.TableColumn column = null;
-
-            for (int i = 0; i < 4; i++) {
-
-                column = jSearchTable2.getColumnModel().getColumn(i);
-
-                if (i == 1) {
-
-                    column.setPreferredWidth(400);
-                    //sport column is bigger
-                } else {
-
-                    column.setPreferredWidth(200);
-
-                }
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
             }
-            */
-            jSearchTable22.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jSearchTable22MouseClicked(evt);
-                }
-            });
-            jSearchScrollPane22.setViewportView(jSearchTable22);
 
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.gridwidth = 3;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 20.0;
-            jSearchPanel22.add(jSearchScrollPane22, gridBagConstraints);
-
-            jButton522.setText("Close");
-            jButton522.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton522ActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            jSearchPanel22.add(jButton522, gridBagConstraints);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jSearchDialog22.getContentPane().add(jSearchPanel22, gridBagConstraints);
-
-            jSearchDialog21.setModal(true);
-            jSearchDialog21.setUndecorated(true);
-            jSearchDialog21.getContentPane().setLayout(new java.awt.GridBagLayout());
-
-            jSearchPanel21.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            jSearchPanel21.setLayout(new java.awt.GridBagLayout());
-
-            jTextField1131.addCaretListener(new javax.swing.event.CaretListener() {
-                public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                    jTextField1131CaretUpdate(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-            jSearchPanel21.add(jTextField1131, gridBagConstraints);
-
-            jSearchTable21.setToolTipText("");
-            jSearchTable21.setShowHorizontalLines(false);
-            /*javax.swing.table.TableColumn column = null;
-
-            for (int i = 0; i < 4; i++) {
-
-                column = jSearchTable2.getColumnModel().getColumn(i);
-
-                if (i == 1) {
-
-                    column.setPreferredWidth(400);
-                    //sport column is bigger
-                } else {
-
-                    column.setPreferredWidth(200);
-
-                }
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
-            */
-            jSearchTable21.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jSearchTable21MouseClicked(evt);
-                }
-            });
-            jSearchScrollPane21.setViewportView(jSearchTable21);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.gridwidth = 3;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 20.0;
-            jSearchPanel21.add(jSearchScrollPane21, gridBagConstraints);
-
-            jButton521.setText("Close");
-            jButton521.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton521ActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            jSearchPanel21.add(jButton521, gridBagConstraints);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jSearchDialog21.getContentPane().add(jSearchPanel21, gridBagConstraints);
-
-            jSearchDialog23.setModal(true);
-            jSearchDialog23.setUndecorated(true);
-            jSearchDialog23.getContentPane().setLayout(new java.awt.GridBagLayout());
-
-            jSearchPanel23.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-            jSearchPanel23.setLayout(new java.awt.GridBagLayout());
-
-            jTextField1133.addCaretListener(new javax.swing.event.CaretListener() {
-                public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                    jTextField1133CaretUpdate(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-            jSearchPanel23.add(jTextField1133, gridBagConstraints);
-
-            jSearchTable23.setToolTipText("");
-            jSearchTable23.setShowHorizontalLines(false);
-            /*javax.swing.table.TableColumn column = null;
-
-            for (int i = 0; i < 4; i++) {
-
-                column = jSearchTable2.getColumnModel().getColumn(i);
-
-                if (i == 1) {
-
-                    column.setPreferredWidth(400);
-                    //sport column is bigger
-                } else {
-
-                    column.setPreferredWidth(200);
-
-                }
+        });
+        jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jXTable1MouseClicked(evt);
             }
-            */
-            jSearchTable23.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jSearchTable23MouseClicked(evt);
-                }
-            });
-            jSearchScrollPane23.setViewportView(jSearchTable23);
+        });
+        jScrollPane1.setViewportView(jXTable1);
 
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.gridwidth = 3;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 20.0;
-            jSearchPanel23.add(jSearchScrollPane23, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        save.add(jScrollPane1, gridBagConstraints);
 
-            jButton523.setText("Close");
-            jButton523.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton523ActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            jSearchPanel23.add(jButton523, gridBagConstraints);
+        cardPanelController.add(save, "card3");
 
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jSearchDialog23.getContentPane().add(jSearchPanel23, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel1.add(cardPanelController, gridBagConstraints);
 
-            setClosable(true);
-            setIconifiable(true);
-            setTitle("TRANSPORT LOCATION");
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-            jPanel1.setLayout(new java.awt.GridBagLayout());
-
-            jPanel2.setLayout(new java.awt.GridBagLayout());
-
-            btnclose.setText("CLOSE");
-            btnclose.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btncloseActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 4;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(btnclose, gridBagConstraints);
-
-            btnreset.setText("RESET");
-            btnreset.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnresetActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 2;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(btnreset, gridBagConstraints);
-
-            btnsave.setText("SAVE");
-            btnsave.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnsaveActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(btnsave, gridBagConstraints);
-
-            btnedit.setText("EDIT");
-            btnedit.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btneditActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(btnedit, gridBagConstraints);
-
-            btnupdate.setText("UPDATE");
-            btnupdate.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btnupdateActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(btnupdate, gridBagConstraints);
-
-            jButton1.setText("REMOVE ROW");
-            jButton1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    jButton1ActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 3;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel2.add(jButton1, gridBagConstraints);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.weightx = 2.0;
-            jPanel1.add(jPanel2, gridBagConstraints);
-
-            cardPanelController.setLayout(new java.awt.CardLayout());
-
-            edit.setLayout(new java.awt.GridBagLayout());
-
-            jXTable2.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null}
-                },
-                new String [] {
-                    "location ID", "Location Name", "Transport Fees"
-                }
-            ) {
-                boolean[] canEdit = new boolean [] {
-                    false, false, true
-                };
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
-            jXTable2.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jXTable2MouseClicked(evt);
-                }
-            });
-            jScrollPane2.setViewportView(jXTable2);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 1;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            edit.add(jScrollPane2, gridBagConstraints);
-
-            jPanel41.setLayout(new java.awt.GridBagLayout());
-
-            txtid.setEditable(false);
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 1;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.weightx = 1.0;
-            jPanel41.add(txtid, gridBagConstraints);
-
-            searchButton1.setToolTipText("Search");
-            searchButton1.setMaximumSize(new java.awt.Dimension(74, 53));
-            searchButton1.setMinimumSize(new java.awt.Dimension(20, 20));
-            searchButton1.setPreferredSize(new java.awt.Dimension(20, 20));
-            searchButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-            searchButton1.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    searchButton1ActionPerformed(evt);
-                }
-            });
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 2;
-            gridBagConstraints.gridy = 0;
-            jPanel41.add(searchButton1, gridBagConstraints);
-
-            jLabel1.setText("SELECT THE CURRENT TERM ID");
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            jPanel41.add(jLabel1, gridBagConstraints);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-            gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-            gridBagConstraints.weightx = 2.0;
-            gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
-            edit.add(jPanel41, gridBagConstraints);
-
-            cardPanelController.add(edit, "card2");
-
-            save.setLayout(new java.awt.GridBagLayout());
-
-            jXTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null},
-                    {null, null, null}
-                },
-                new String [] {
-                    "Term", "Location Name", "Transport Fees"
-                }
-            ) {
-                Class[] types = new Class [] {
-                    java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
-                };
-                boolean[] canEdit = new boolean [] {
-                    false, true, true
-                };
-
-                public Class getColumnClass(int columnIndex) {
-                    return types [columnIndex];
-                }
-
-                public boolean isCellEditable(int rowIndex, int columnIndex) {
-                    return canEdit [columnIndex];
-                }
-            });
-            jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    jXTable1MouseClicked(evt);
-                }
-            });
-            jScrollPane1.setViewportView(jXTable1);
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            save.add(jScrollPane1, gridBagConstraints);
-
-            cardPanelController.add(save, "card3");
-
-            gridBagConstraints = new java.awt.GridBagConstraints();
-            gridBagConstraints.gridx = 0;
-            gridBagConstraints.gridy = 0;
-            gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-            gridBagConstraints.weightx = 1.0;
-            gridBagConstraints.weighty = 1.0;
-            jPanel1.add(cardPanelController, gridBagConstraints);
-
-            getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-            pack();
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         validateSaving();

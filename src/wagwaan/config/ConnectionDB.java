@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,9 +69,12 @@ private void dbConnection(){
           }
           else{
               System.out.println("UNABLE TO CONNECT");
+              JOptionPane.showMessageDialog(null, "Check the parameters set in SYSPROP.properties file", "Unable to Establish a Database Connection", JOptionPane.INFORMATION_MESSAGE);
+              System.exit(0);
           }
       } catch (ClassNotFoundException | SQLException | IOException ex) {
           Logger.getLogger(ConnectionDB.class.getName()).log(Level.SEVERE, null, ex);
+          JOptionPane.showMessageDialog(null, ex.getMessage());
       }
          
     }

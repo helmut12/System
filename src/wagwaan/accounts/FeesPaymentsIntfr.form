@@ -440,6 +440,9 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Current Term"/>
               </Properties>
               <Constraints>
@@ -450,6 +453,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Student ID"/>
               </Properties>
               <Constraints>
@@ -460,6 +466,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Student Names"/>
               </Properties>
               <Constraints>
@@ -480,6 +489,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Class"/>
               </Properties>
               <Constraints>
@@ -520,6 +532,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Amount Paid"/>
               </Properties>
               <Constraints>
@@ -667,6 +682,9 @@
               <SubComponents>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox5">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Swimming"/>
                   </Properties>
                   <Events>
@@ -681,6 +699,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox6">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Uniform"/>
                   </Properties>
                   <Events>
@@ -695,6 +716,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox2">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Lunch"/>
                   </Properties>
                   <Events>
@@ -709,6 +733,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox1">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Tuition"/>
                   </Properties>
                   <Events>
@@ -723,6 +750,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox3">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Tea/Milk"/>
                   </Properties>
                   <Events>
@@ -737,6 +767,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox4">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Extra-Tuition"/>
                   </Properties>
                   <Events>
@@ -751,6 +784,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox7">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Diary"/>
                   </Properties>
                   <Events>
@@ -765,6 +801,9 @@
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="jCheckBox8">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="66" green="0" red="0" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Transport"/>
                   </Properties>
                   <Events>
@@ -797,6 +836,9 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel23">
                       <Properties>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="33" red="33" type="rgb"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Location Name"/>
                       </Properties>
                       <Constraints>
@@ -994,6 +1036,9 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="99" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Payment Date"/>
               </Properties>
               <Constraints>
@@ -1135,9 +1180,12 @@
                           <Color PropertyName="color" blue="99" green="99" red="99" type="rgb"/>
                         </LineBorder>
                       </Border>
-                      <Color PropertyName="color" blue="33" green="0" red="ff" type="rgb"/>
+                      <Color PropertyName="color" blue="ff" green="0" red="0" type="rgb"/>
                     </TitledBorder>
                   </Border>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="0" red="0" type="rgb"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1223,6 +1271,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel8">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Current Term"/>
                   </Properties>
                   <Constraints>
@@ -1233,6 +1284,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Amount Payable"/>
                   </Properties>
                   <Constraints>
@@ -1253,6 +1307,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel21">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Balance"/>
                   </Properties>
                   <Constraints>
@@ -1283,6 +1340,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel9">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Class"/>
                   </Properties>
                   <Constraints>
@@ -1303,6 +1363,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel18">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Clearance Amount"/>
                   </Properties>
                   <Constraints>
@@ -1313,6 +1376,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel16">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Amount Paid"/>
                   </Properties>
                   <Constraints>
@@ -1377,6 +1443,9 @@
                 </Container>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Clearance Date"/>
                   </Properties>
                   <Constraints>
@@ -1400,6 +1469,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel14">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Student Names"/>
                   </Properties>
                   <Constraints>
@@ -1522,6 +1594,9 @@
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel15">
                   <Properties>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Student ID"/>
                   </Properties>
                   <Constraints>

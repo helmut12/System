@@ -414,9 +414,6 @@
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXTable2MouseClicked"/>
                       </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="//jXTable2 = new wagwaan.config.JTable(){&#xa;jXTable2=new org.jdesktop.swingx.JXTable(){&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class,java.lang.Object.class};&#xa;    boolean[] canEdit = new boolean [] {false, false, true};&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;        };"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -532,9 +529,6 @@
                       <Events>
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jXTable1MouseClicked"/>
                       </Events>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="jXTable1 = new org.jdesktop.swingx.JXTable(){&#xa;    Class[] types = new Class [] {&#xa;        java.lang.Object.class, java.lang.Object.class,java.lang.Object.class};&#xa;    boolean[] canEdit = new boolean [] {false, true, true};&#xa;&#xa;    public Class getColumnClass(int columnIndex) {&#xa;        return types [columnIndex];&#xa;    }&#xa;&#xa;    public boolean isCellEditable(int rowIndex, int columnIndex) {&#xa;        return canEdit [columnIndex];&#xa;    }&#xa;        };"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>

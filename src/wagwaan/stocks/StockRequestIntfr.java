@@ -65,7 +65,20 @@ Connection con;
         jButton527 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable(){
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Object.class,
+                java.lang.Object.class,                 java.lang.Object.class};
+            boolean[] canEdit = new boolean [] {false, false, false, true, false, true};
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        };
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();

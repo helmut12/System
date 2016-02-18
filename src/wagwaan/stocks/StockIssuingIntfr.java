@@ -82,7 +82,7 @@ Connection con;
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jXTable1=new org.jdesktop.swingx.JXTable(){
+        /*jXTable1=new org.jdesktop.swingx.JXTable(){
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class,java.lang.Object.class, java.lang.Object.class, java.lang.Object.class,
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
@@ -96,7 +96,7 @@ Connection con;
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
-        };
+        };*/
         jXTable1 = new org.jdesktop.swingx.JXTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel41 = new javax.swing.JPanel();

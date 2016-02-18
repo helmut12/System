@@ -839,6 +839,7 @@ private void validateUpdate(){
     }//GEN-LAST:event_txtaccountnoKeyReleased
     private void resetDetails(){
     txtid.setText("");
+    
     buttonGroup1.clearSelection();
     txtnames.setText("");
     txtaddress.setText("");
@@ -850,6 +851,10 @@ private void validateUpdate(){
 //    btnedit.setText("EDIT");
     btnupdate.setVisible(false);
     btnedit.setVisible(true);
+    txtbankname.setText("");
+    txtcredit.setText("");
+    txtbranchname.setText("");
+    txtbranchcode.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

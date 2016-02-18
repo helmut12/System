@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package wagwaan.stocks;
+package wagwaan.setup;
 
 import wagwaan.config.ConnectionDB;
 import wagwaan.config.DateCellEditor;
@@ -30,7 +30,18 @@ Connection con;
         initComponents();
         con=ConnectionDB.getInstance().getCon();
         btnupdate.setVisible(false);
+//        determineEditable(ERROR, WIDTH);
     }
+    
+//    private boolean determineEditable(int row, int column){
+//        row=jXTable2.getSelectedRow();
+//        for(column=0;column<jXTable2.getColumnCount();column++){
+//            if (column==0 || column==1 || column==4 || column==5 ||column==7) {
+//                return false;
+//            }
+//    }
+//        return true;
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -84,6 +95,9 @@ Connection con;
         jXTable1 = new org.jdesktop.swingx.JXTable();
         card3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
+        /*
+
+        */
         jXTable2 = new org.jdesktop.swingx.JXTable();
 
         jSearchDialog22.setModal(true);
@@ -811,6 +825,7 @@ Connection con;
                 return types [columnIndex];
             }
         });
+        jXTable2.getTableHeader().setReorderingAllowed(false);
         jXTable2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jXTable2MouseClicked(evt);

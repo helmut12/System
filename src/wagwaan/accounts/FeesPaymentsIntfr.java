@@ -563,18 +563,21 @@ Connection con;
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        jLabel1.setForeground(new java.awt.Color(153, 0, 0));
         jLabel1.setText("Current Term");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         jPanel1.add(jLabel1, gridBagConstraints);
 
+        jLabel2.setForeground(new java.awt.Color(153, 0, 0));
         jLabel2.setText("Student ID");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         jPanel1.add(jLabel2, gridBagConstraints);
 
+        jLabel3.setForeground(new java.awt.Color(153, 0, 0));
         jLabel3.setText("Student Names");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -590,6 +593,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txtnames, gridBagConstraints);
 
+        jLabel4.setForeground(new java.awt.Color(153, 0, 0));
         jLabel4.setText("Class");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -615,6 +619,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txtamountpayable, gridBagConstraints);
 
+        jLabel6.setForeground(new java.awt.Color(153, 0, 0));
         jLabel6.setText("Amount Paid");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -702,6 +707,7 @@ Connection con;
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), "Payment Selections", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
+        jCheckBox5.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox5.setText("Swimming");
         jCheckBox5.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -721,6 +727,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox5, gridBagConstraints);
 
+        jCheckBox6.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox6.setText("Uniform");
         jCheckBox6.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -740,6 +747,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox6, gridBagConstraints);
 
+        jCheckBox2.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox2.setText("Lunch");
         jCheckBox2.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -759,6 +767,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox2, gridBagConstraints);
 
+        jCheckBox1.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox1.setText("Tuition");
         jCheckBox1.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -778,6 +787,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox1, gridBagConstraints);
 
+        jCheckBox3.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox3.setText("Tea/Milk");
         jCheckBox3.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -797,6 +807,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox3, gridBagConstraints);
 
+        jCheckBox4.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox4.setText("Extra-Tuition");
         jCheckBox4.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -816,6 +827,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox4, gridBagConstraints);
 
+        jCheckBox7.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox7.setText("Diary");
         jCheckBox7.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -835,6 +847,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel6.add(jCheckBox7, gridBagConstraints);
 
+        jCheckBox8.setForeground(new java.awt.Color(0, 0, 102));
         jCheckBox8.setText("Transport");
         jCheckBox8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -860,6 +873,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel3.add(txtlocation, gridBagConstraints);
 
+        jLabel23.setForeground(new java.awt.Color(51, 51, 255));
         jLabel23.setText("Location Name");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1027,6 +1041,7 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(txtslipno1, gridBagConstraints);
 
+        jLabel12.setForeground(new java.awt.Color(153, 0, 0));
         jLabel12.setText("Payment Date");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1120,7 +1135,8 @@ Connection con;
         gridBagConstraints.weightx = 1.0;
         jPanel8.add(jPanel9, gridBagConstraints);
 
-        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Payment Mode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 51))); // NOI18N
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)), "Payment Mode", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(0, 0, 255))); // NOI18N
+        jPanel10.setForeground(new java.awt.Color(0, 0, 255));
         jPanel10.setLayout(new java.awt.GridBagLayout());
 
         buttonGroup2.add(jRadioButton5);
@@ -1178,6 +1194,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(txtid1, gridBagConstraints);
 
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
         jLabel8.setText("Current Term");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1186,6 +1203,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jLabel8, gridBagConstraints);
 
+        jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("Amount Payable");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1202,6 +1220,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jLabel19, gridBagConstraints);
 
+        jLabel21.setForeground(new java.awt.Color(255, 0, 0));
         jLabel21.setText("Balance");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1230,6 +1249,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(txtamountpaid1, gridBagConstraints);
 
+        jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("Class");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1248,6 +1268,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(txtamountpayable1, gridBagConstraints);
 
+        jLabel18.setForeground(new java.awt.Color(255, 0, 0));
         jLabel18.setText("Clearance Amount");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1256,6 +1277,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jLabel18, gridBagConstraints);
 
+        jLabel16.setForeground(new java.awt.Color(255, 0, 0));
         jLabel16.setText("Amount Paid");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1307,6 +1329,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jPanel42, gridBagConstraints);
 
+        jLabel20.setForeground(new java.awt.Color(255, 0, 0));
         jLabel20.setText("Clearance Date");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -1324,6 +1347,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jLabel13, gridBagConstraints);
 
+        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
         jLabel14.setText("Student Names");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1413,6 +1437,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel2.add(jLabel27, gridBagConstraints);
 
+        jLabel15.setForeground(new java.awt.Color(255, 0, 0));
         jLabel15.setText("Student ID");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;

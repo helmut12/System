@@ -5,6 +5,11 @@
  */
 package wagwaan.com;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import static java.awt.SystemColor.desktop;
 import wagwaan.setup.StudentRegisterIntfr;
 import wagwaan.setup.LocationIntfr;
 import wagwaan.setup.StaffRegisterIntfr;
@@ -14,7 +19,7 @@ import wagwaan.config.ConnectionDB;
 import wagwaan.accounts.FeesPaymentsIntfr;
 import wagwaan.accounts.FeesPanel;
 import wagwaan.accounts.ExpectedIncomeDates;
-import wagwaan.stocks.StockItemsRegIntfr;
+import wagwaan.setup.StockItemsRegIntfr;
 import wagwaan.stocks.StockIssuingIntfr;
 import wagwaan.stocks.OrdersPanel;
 import wagwaan.stocks.OrdersIntfr;
@@ -26,7 +31,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import wagwaan.config.SQLHelper;
 import wagwaan.ops.PasswordResetting;
@@ -41,6 +48,9 @@ import wagwaan.stocks.StockRequestIntfr;
 public class SysMain extends javax.swing.JFrame {
 private  Connection connectDB;
 private String h_name;
+private final Image backImage = new ImageIcon(this.getClass().getResource("/wagwaan/img/new.png")).getImage();
+
+
     /**
      * Creates new form SysMain
      */
@@ -48,8 +58,32 @@ private String h_name;
         connectDB =ConnectionDB.getInstance().getCon();
         initComponents();
     
+
     }
-    
+
+
+	
+        public void paintComponent( Graphics g )
+        {
+           if(backImage == null){
+           super.paintComponents(g);
+           }
+              
+           else
+           {
+              Graphics2D g2d = (Graphics2D)g;
+
+              //scale the image to fit the size of the Panel
+              double mw = backImage.getWidth(jDesktopPane1);
+              double mh = backImage.getHeight(jDesktopPane1);
+
+              double sw = getWidth() / mw;
+              double sh = getHeight() / mh;
+
+              g2d.scale(sw, sh);
+              g2d.drawImage(backImage, (int)mw, (int) mh, this);
+           }
+        }    
     
     /**
      * This method is called from within the constructor to initialize the form.

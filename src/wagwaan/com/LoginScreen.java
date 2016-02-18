@@ -49,13 +49,18 @@ private final Connection connectDB;
           connectDB=ConnectionDB.getInstance().getCon();
         initComponents();
 //         setIconImage(new ImageIcon(getClass().getResource("/wagwaan/img/the_deal.png")).getImage());
+if(connectDB==null){
+    JOptionPane.showMessageDialog(this, "Unable to Connect Check the SYSPROP.properties file parameters", "Information!!!", JOptionPane.INFORMATION_MESSAGE);
+    System.exit(0);
+}
+else{
         if(!CardController.isShowing()){
         CardController.setVisible(true);
         }
         CardLayout cl=(CardLayout)(CardController.getLayout());
         cl.show(CardController, "card3");
         }
-    
+    }
     
    /* private void dbConnection(){
     try {
