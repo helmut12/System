@@ -672,7 +672,7 @@ Connection con;
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Item Name", "Buying Price", "Discount", "Supplier", "Category", "Date Registered", "Receiving Department", "Minimum Stock Count"
+                "Item Name", "Buying Price", "Discount (%)", "Supplier", "Category", "Date Registered", "Receiving Department", "Minimum Stock Count"
             }
         ) {
             Class[] types = new Class [] {
@@ -923,38 +923,38 @@ Connection con;
     }//GEN-LAST:event_btneditActionPerformed
     private void validateUpdatingData(){
     
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)==null){
-    JOptionPane.showMessageDialog(this, "Please input the name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 1)==null){
-    JOptionPane.showMessageDialog(this, "Please input the buying price", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 2)==null){
-    JOptionPane.showMessageDialog(this, "Please input the discount", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 3)==null){
-    JOptionPane.showMessageDialog(this, "Please input the supplier name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 4)==null){
-    JOptionPane.showMessageDialog(this, "Please input the category", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 5)==null){
-    JOptionPane.showMessageDialog(this, "Please input the registration date", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 6)==null){
-    JOptionPane.showMessageDialog(this, "Please input the receiving department", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 7)==null){
-    JOptionPane.showMessageDialog(this, "Please input the minimum stock count", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 1)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the buying price", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 2)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the discount", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 3)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the supplier name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 4)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the category", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 5)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the registration date", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 6)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the receiving department", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 7)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the minimum stock count", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
     
     updatingData();
     }
@@ -999,6 +999,7 @@ Connection con;
             }
             else{
             JOptionPane.showMessageDialog(this, "You cannot update an item that does not exist");
+            btnupdate.setEnabled(false);
             }
         } catch (SQLException ex) {
             Logger.getLogger(StockItemsRegIntfr.class.getName()).log(Level.SEVERE, null, ex);
@@ -1196,38 +1197,38 @@ Connection con;
     
     private void validateSavingData(){
     
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
-    JOptionPane.showMessageDialog(this, "Please input the item name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 1)==null){
-    JOptionPane.showMessageDialog(this, "Please input the buying price", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
-    JOptionPane.showMessageDialog(this, "Please input the item discount", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
-    JOptionPane.showMessageDialog(this, "Please input the supplier name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
-    JOptionPane.showMessageDialog(this, "Please input the item category", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
-    JOptionPane.showMessageDialog(this, "Please input the item's registration date", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 6)==null){
-    JOptionPane.showMessageDialog(this, "Please input the receiving department", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 7)==null){
-    JOptionPane.showMessageDialog(this, "Please input the minimum stock count", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the item name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 1)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the buying price", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the item discount", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the supplier name", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the item category", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the item's registration date", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 6)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the receiving department", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 7)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the minimum stock count", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
+//    return;
+//    }
     insertDetails();
     }
     private void insertDetails(){
@@ -1248,7 +1249,9 @@ Connection con;
             itemCode=rs.getString(1);
             }
                     pr.setString(1, itemCode);
-                if (jXTable1.getModel().getValueAt(i,0) != null){
+                if (jXTable1.getModel().getValueAt(i,0) != null && jXTable1.getModel().getValueAt(i,1) != null && jXTable1.getModel().getValueAt(i,2) != null && 
+                        jXTable1.getModel().getValueAt(i,3) != null && jXTable1.getModel().getValueAt(i,4) != null && jXTable1.getModel().getValueAt(i,5) != null && 
+                         jXTable1.getModel().getValueAt(i,6) != null && jXTable1.getModel().getValueAt(i,7) != null){
                     pr.setObject(2, jXTable1.getValueAt(i, 0).toString());
                     pr.setObject(3, jXTable1.getValueAt(i, 1).toString());
                     pr.setObject(4, jXTable1.getValueAt(i, 2).toString());

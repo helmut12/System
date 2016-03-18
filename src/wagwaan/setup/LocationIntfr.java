@@ -309,6 +309,7 @@ private Connection connect;
         setClosable(true);
         setIconifiable(true);
         setTitle("TRANSPORT LOCATION");
+        getContentPane().setLayout(new java.awt.BorderLayout());
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -553,16 +554,9 @@ private Connection connect;
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
-            boolean[] canEdit = new boolean [] {
-                false, true, true
-            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
             }
         });
         jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -667,7 +661,7 @@ private Connection connect;
 
     private void jTextField1131CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1131CaretUpdate
         if(jTextField1131.getCaretPosition()>2){
-            jSearchTable21.setModel(TableModel.createTableVectors(connect, "select distinct(current_term_id) from term_fees_setup where current_term_id ilike '%"+jTextField1131.getText()+"%' "));
+            jSearchTable21.setModel(TableModel.createTableVectors(connect, "select distinct(term) from fees_setup where term ilike '%"+jTextField1131.getText()+"%' "));
             jSearchScrollPane21.setViewportView(jSearchTable21);
 
         }
@@ -677,54 +671,6 @@ private Connection connect;
         jXTable1.setValueAt(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 0), jXTable1.getSelectedRow(), 0);
         jSearchDialog21.dispose();
 
-        /*SimpleDateFormat df=new SimpleDateFormat("dd-mm-yyyy");
-        Date dob_date, adm_date;
-
-        try {
-            Statement st1=con.createStatement();
-            ResultSet rs=st1.executeQuery("SELECT tution_fees, extra_tution, swimming_fees, diary_fees, tea_milk_fees, "
-                + "uniform_fees, lunch_fees, transport_fees  FROM term_fees_setup "
-                + "where current_term_id='"+txtterm.getText()+"'and current_class='"+comboclass.getSelectedItem()+"' ");
-            while(rs.next()){
-                jXTable1.setValueAt(rs.getDouble(1), 0, 0);
-                jXTable1.setValueAt(rs.getDouble(2), 0, 1);
-                jXTable1.setValueAt(rs.getDouble(3), 0, 3);
-                jXTable1.setValueAt(rs.getDouble(4), 0, 6);
-                jXTable1.setValueAt(rs.getDouble(5), 0, 4);
-                jXTable1.setValueAt(rs.getDouble(6), 0, 5);
-                jXTable1.setValueAt(rs.getDouble(7), 0, 2);
-                jXTable1.setValueAt(rs.getDouble(8), 0, 7);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
-        /*                if(jXTable1.getValueAt(0, 0)!=null){
-            if(jXTable1.getValueAt(0, 1)!=null){
-                if(jXTable1.getValueAt(0, 2)!=null){
-                    if(jXTable1.getValueAt(0, 3)!=null){
-                        if(jXTable1.getValueAt(0, 4)!=null){
-                            if(jXTable1.getValueAt(0, 5)!=null){
-                                if(jXTable1.getValueAt(0, 6)!=null){
-                                    if(jXTable1.getValueAt(0, 7)!=null){
-                                        double a1=(double) jXTable1.getValueAt(0, 0);
-                                        double a2=(double)jXTable1.getValueAt(0, 1);
-                                        double a3=(double)jXTable1.getValueAt(0, 2);
-                                        double a4=(double)jXTable1.getValueAt(0, 3);
-                                        double a5=(double)jXTable1.getValueAt(0, 4);
-                                        double a6=(double)jXTable1.getValueAt(0, 5);
-                                        double a7=(double)jXTable1.getValueAt(0, 6);
-                                        double a8=(double)jXTable1.getValueAt(0, 7);
-                                        double total=0;
-                                        total=a1+a2+a3+a4+a5+a6+a7+a8;
-                                        txttotalamount.setText(""+total+"");
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
     }//GEN-LAST:event_jSearchTable21MouseClicked
 
     private void jButton521ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton521ActionPerformed
@@ -856,64 +802,55 @@ private Connection connect;
     }
     }
     private void validateSaving(){
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 1)==null){
-    JOptionPane.showMessageDialog(this, "Please input the Location Name", "Missing Variables", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
-    JOptionPane.showMessageDialog(this, "Please input the Transport Fees", "Missing Variables", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
-    JOptionPane.showMessageDialog(this, "Please select the current term ID", "Missing Variables", JOptionPane.INFORMATION_MESSAGE);
-    return;
-    }
+    
     insertDetails();
     }
+    
+    
     private void insertDetails(){
-    PreparedStatement pr=null;
-    String id=null;
-    int count=0;
-    try {
-        connect.setAutoCommit(false);
-    for(int i=0;i<jXTable1.getRowCount();i++){
-    ResultSet rs1=SQLHelper.getResultset(connect, "Select count(location_name) from location where location_name ilike '"+jXTable1.getValueAt(i, 1)+"' and current_term_id='"+jXTable1.getValueAt(i, 0)+"'");
-    while(rs1.next()){
-    count=rs1.getInt(1);
-    }
-    if (count>0){
-        JOptionPane.showMessageDialog(this, "Location  "+jXTable1.getValueAt(i, 1)+" already exists.\n If you wish to change the details for this location, \nplease click the reset button and the edit button to update its details");
-            return;
+            PreparedStatement pr=null;
+            String id=null;
+            int count=0;
+            try {
+                connect.setAutoCommit(false);
+            for(int i=0;i<jXTable1.getRowCount();i++){
+            ResultSet rs1=SQLHelper.getResultset(connect, "Select count(location_name) from location where location_name ilike '"+jXTable1.getValueAt(i, 1)+"' and current_term_id='"+jXTable1.getValueAt(i, 0)+"'");
+            while(rs1.next()){
+            count=rs1.getInt(1);
             }
-            else if(count==0){
-    String sql="INSERT INTO location(location_id, location_name, fees, current_term_id)VALUES (?, ?, ?::numeric(10, 2), ?)";
-    
-        if(jXTable1.getValueAt(i, 0)!=null){
-            
-                ResultSet rs=SQLHelper.getResultset(connect, "select 'LOC' || nextval('location_id_seq')");
-                while(rs.next()){
-                id=rs.getString(1);
+            if (count>0){
+                JOptionPane.showMessageDialog(this, "Location  "+jXTable1.getValueAt(i, 1)+" already exists.\n If you wish to change the details for this location, \nplease click the reset button and the edit button to update its details");
+                    return;
+                    }
+                    else if(count==0){
+            String sql="INSERT INTO location(location_id, location_name, fees, current_term_id)VALUES (?, ?, ?::numeric(10, 2), ?)";
+
+                if(jXTable1.getValueAt(i, 0)!=null && jXTable1.getValueAt(i, 2)!=null && jXTable1.getValueAt(i, 1)!=null){
+
+                        ResultSet rs=SQLHelper.getResultset(connect, "select 'LOC' || nextval('location_id_seq')");
+                        while(rs.next()){
+                        id=rs.getString(1);
+                        }
+                        pr=connect.prepareStatement(sql);
+                        pr.setString(1, id);
+                        pr.setObject(2, jXTable1.getValueAt(i, 1));
+                        pr.setObject(3, jXTable1.getValueAt(i, 2));
+                        pr.setObject(4, jXTable1.getValueAt(i, 0));
+                        pr.executeUpdate();
+                        System.out.println(pr.toString());
                 }
-                pr=connect.prepareStatement(sql);
-                pr.setString(1, id);
-                pr.setObject(2, jXTable1.getValueAt(i, 1));
-                pr.setObject(3, jXTable1.getValueAt(i, 2));
-                pr.setObject(4, jXTable1.getValueAt(i, 0));
-                pr.executeUpdate();
-                System.out.println(pr.toString());
-        }
-    }
-    }
-        connect.commit();
-        connect.setAutoCommit(true);
-        if(pr!=null){
-        JOptionPane.showMessageDialog(this, "Insert is Successful");
-        resetDetails();
-        }
-        } catch (SQLException ex) {
-                Logger.getLogger(LocationIntfr.class.getName()).log(Level.SEVERE, null, ex);
             }
-    
+            }
+                connect.commit();
+                connect.setAutoCommit(true);
+                if(pr!=null){
+                JOptionPane.showMessageDialog(this, "Insert is Successful");
+                resetDetails();
+                }
+                } catch (SQLException ex) {
+                        Logger.getLogger(LocationIntfr.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
     }
     private void resetDetails(){
     for(int i=0;i<jXTable1.getRowCount();i++){

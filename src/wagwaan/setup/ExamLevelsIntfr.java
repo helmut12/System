@@ -149,7 +149,7 @@ public class ExamLevelsIntfr extends javax.swing.JInternalFrame {
             return;
         }
         PreparedStatement pr=null;
-        String sql="insert into exam_levels(level_id, level)values(?, ?)";
+        String sql="insert into exam_levels(level_id, level, MAXIMUM_SCORE)values(?, ?, ?::INT)";
         String id=null;
         try {
             con.setAutoCommit(false);
@@ -161,6 +161,7 @@ public class ExamLevelsIntfr extends javax.swing.JInternalFrame {
             pr=con.prepareStatement(sql);
             pr.setString(1, id);
             pr.setString(2, jTextField2.getText());
+            pr.setObject(3, jTextField3.getText());
             pr.executeUpdate();
             
             con.commit();
@@ -205,6 +206,7 @@ public class ExamLevelsIntfr extends javax.swing.JInternalFrame {
         private void resetDetails(){
             jTextField1.setText("");
             jTextField2.setText("");
+            jTextField3.setText("");
         }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

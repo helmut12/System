@@ -43,7 +43,7 @@ Connection con;
         jButton9 = new javax.swing.JButton();
         jSearchDialog1 = new javax.swing.JDialog();
         jSearchPanel1 = new javax.swing.JPanel();
-        jTextField112 = new javax.swing.JTextField();
+        jTextField117 = new javax.swing.JTextField();
         jSearchScrollPane1 = new javax.swing.JScrollPane();
         jSearchTable1 = new javax.swing.JTable();
         jButton10 = new javax.swing.JButton();
@@ -72,7 +72,7 @@ Connection con;
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnsave = new javax.swing.JButton();
         update = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -168,9 +168,9 @@ Connection con;
         jSearchPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jSearchPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jTextField112.addCaretListener(new javax.swing.event.CaretListener() {
+        jTextField117.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField112CaretUpdate(evt);
+                jTextField117CaretUpdate(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -178,7 +178,7 @@ Connection con;
         gridBagConstraints.weightx = 10.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 100);
-        jSearchPanel1.add(jTextField112, gridBagConstraints);
+        jSearchPanel1.add(jTextField117, gridBagConstraints);
 
         jSearchTable1.setShowHorizontalLines(false);
         /*    try {
@@ -444,10 +444,10 @@ Connection con;
         gridBagConstraints.weighty = 1.0;
         jPanel2.add(jButton2, gridBagConstraints);
 
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnsaveActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -455,7 +455,7 @@ Connection con;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButton3, gridBagConstraints);
+        jPanel2.add(btnsave, gridBagConstraints);
 
         update.setText("Update");
         update.addActionListener(new java.awt.event.ActionListener() {
@@ -573,12 +573,9 @@ Connection con;
 
     private void jTextField111CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField111CaretUpdate
         if (this.jTextField111.getCaretPosition() > 3) {
-            
-        
             jSearchTable.setModel(wagwaan.config.TableModel.createTableVectors(con, "select payable_item from payables where payable_item ilike '%"+jTextField111.getText()+"%' and payable_item not like '%transport%' "));
             jSearchScrollPane.setViewportView(jSearchTable);
-            System.out.println("Cannot sort out");
-
+            
         }
         // Add your handling code here:
     }//GEN-LAST:event_jTextField111CaretUpdate
@@ -624,7 +621,7 @@ Connection con;
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         PreparedStatement pr=null;
         String sql="INSERT INTO public.fees_setup(payable, term, class, amount)VALUES (?, ?, ?, ?::NUMERIC);";
         int count=0;
@@ -636,11 +633,13 @@ Connection con;
                 count=rs.getInt(1);
             }
             if(count>0){
-            JOptionPane.showMessageDialog(this, " '"+jTable1.getValueAt(i, 0)+"' fees for term '"+jTable1.getValueAt(i, 1)+"' and class '"+jTable1.getValueAt(i, 2)+"' already exist in the database");
-            jButton3.setEnabled(false);
+            JOptionPane.showMessageDialog(this, " '"+jTable1.getValueAt(i, 0)+"' fees for term '"+jTable1.getValueAt(i, 1)+"' and class '"+jTable1.getValueAt(i, 2)+"' already exist in the database. \n"
+                    + "Please click the remove row button to eliminate the duplicate row(s)");
+            btnsave.setEnabled(false);
+            return;
             }
             else{
-                jButton3.setEnabled(true);
+                btnsave.setEnabled(true);
                 if(jTable1.getValueAt(i, 0)!=null &&jTable1.getValueAt(i, 1)!=null && jTable1.getValueAt(i, 2)!=null && jTable1.getValueAt(i, 3)!=null){
                         pr=con.prepareStatement(sql);
                         pr.setObject(1, jTable1.getValueAt(i, 0));
@@ -649,18 +648,18 @@ Connection con;
                         pr.setObject(4, jTable1.getValueAt(i, 3));
                         pr.executeUpdate();
             }
-            }
         }
-        con.commit();
+        }
+           con.commit();
         con.setAutoCommit(true);
-        if(con!=null){
+        if(pr!=null){
             JOptionPane.showMessageDialog(this, "Insert is Successful");
             resetDetails();
         }
     } catch (SQLException ex) {
         Logger.getLogger(NewFeesSetupIntfr.class.getName()).log(Level.SEVERE, null, ex);
     }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnsaveActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         update.setVisible(true);
@@ -669,12 +668,12 @@ Connection con;
         JOptionPane.showMessageDialog(this, "Please select the term and class that you wish to edit");
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jTextField112CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField112CaretUpdate
-        if(jTextField112.getCaretPosition()>3){
-            wagwaan.config.TableModel.createTableVectors(con, "select term from fees_setup where term ilike '"+jTextField112.getText()+"' and class='"+jComboBox1.getSelectedItem()+"'");
+    private void jTextField117CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField117CaretUpdate
+        if(jTextField117.getCaretPosition()>3){
+            jSearchTable1.setModel(wagwaan.config.TableModel.createTableVectors(con, "select distinct(term) from fees_setup where class='"+jComboBox1.getSelectedItem()+"' and term ilike '"+jTextField117.getText()+"%'  "));
             jSearchScrollPane1.setViewportView(jSearchTable1);
         }
-    }//GEN-LAST:event_jTextField112CaretUpdate
+    }//GEN-LAST:event_jTextField117CaretUpdate
 
     private void jSearchTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTable1MouseClicked
         jTextField1.setText(jSearchTable1.getValueAt(jSearchTable1.getSelectedRow(), 0).toString());
@@ -696,22 +695,29 @@ Connection con;
     }//GEN-LAST:event_jSearchTable1MouseClicked
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        jSearchDialog1.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
         PreparedStatement pr=null;
-        String sql="UPDATE public.fees_setup   SET payable=?, term=?, class=?, amount=?::numeric WHERE class='"+jComboBox1.getSelectedItem()+"' and term='"+jTextField1.getText()+"'";
+        
         try {
             con.setAutoCommit(false);
         for(int i=0;i<jTable1.getRowCount();i++){
+            String sql="UPDATE public.fees_setup SET term=?, class=?, amount=?::numeric WHERE class='"+jComboBox1.getSelectedItem()+"' "
+                    + "and term='"+jTextField1.getText()+"' and payable='"+jTable1.getValueAt(i, 0)+"' ";
+            
             if(jTable1.getValueAt(i, 0)!=null &&jTable1.getValueAt(i, 1)!=null && jTable1.getValueAt(i, 2)!=null && jTable1.getValueAt(i, 3)!=null){
+                
                     pr=con.prepareStatement(sql);
-                    pr.setObject(1, jTable1.getValueAt(i, 0));
-                    pr.setObject(2, jTable1.getValueAt(i, 1));
-                    pr.setObject(3, jTable1.getValueAt(i, 2));
-                    pr.setObject(4, jTable1.getValueAt(i, 3));
+                    pr.setObject(1, jTable1.getValueAt(i, 1));
+                    pr.setObject(2, jTable1.getValueAt(i, 2));
+                    pr.setObject(3, jTable1.getValueAt(i, 3));
                     pr.executeUpdate();
+            }
+            else if(jTable1.getValueAt(i, 0)==null &&jTable1.getValueAt(i, 1)==null && jTable1.getValueAt(i, 2)==null && jTable1.getValueAt(i, 3)==null){
+                JOptionPane.showMessageDialog(this, "Some information is missing. You cannot save empty spaces or \n update stuff that does not exist.");
+                return;
             }
         }
         con.commit();
@@ -745,7 +751,7 @@ Connection con;
     }//GEN-LAST:event_jSearchTable2MouseClicked
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
+        jSearchDialog2.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -777,15 +783,16 @@ Connection con;
                 
                 defTableModel.removeRow(jTable1.getSelectedRow());
             }
+//            btnsave.setEnabled(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnsave;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -814,8 +821,8 @@ Connection con;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField111;
-    private javax.swing.JTextField jTextField112;
     private javax.swing.JTextField jTextField113;
+    private javax.swing.JTextField jTextField117;
     private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }

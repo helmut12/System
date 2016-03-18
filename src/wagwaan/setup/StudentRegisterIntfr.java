@@ -839,6 +839,12 @@ return id;
         JOptionPane.showMessageDialog(this,  "Please input the student id!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
+    
+    if(txtid1.getText().isEmpty()){
+        JOptionPane.showMessageDialog(this,  "Please select the current term!", "Caution!", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    
     if(txtfname.getText().isEmpty()){
     JOptionPane.showMessageDialog(this,  "Please input the first name!!", "Caution!",JOptionPane.ERROR_MESSAGE);
         return;
@@ -933,6 +939,11 @@ return id;
         count=rs.getInt(1);
         }
         if(count<=0){
+//            int option=JOptionPane.showMessageDialog(this, "Student "+txtid.getText()+" does not exist. \nWould you wish to register Him/Her?", "Non-existent information found", JOptionPane.YES_NO_OPTION);
+//            
+//            if(option==JOptionPane.YES_OPTION){
+//                validateSavedData();
+//            }
             validateSavedData();
         }
         else{
@@ -1056,7 +1067,8 @@ btnsave.setEnabled(true);
                 txtfname.setText("");
                 jLabel14.setVisible(false);
                 jPasswordField1.setVisible(false);
-                txtid1.getText();
+                txtid1.setText("");
+                txtid.setText("");
         txtmname.setText("");
         txtlname.setText("");
         dob.setDate(null);
@@ -1100,7 +1112,7 @@ btnsave.setEnabled(true);
     private void jTextField1132CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1132CaretUpdate
         if(jTextField1132.getCaretPosition()>2){
 
-            jSearchTable22.setModel(TableModel.createTableVectors(con, "select distinct(current_term_id) from term_fees_setup where current_term_id ilike '%"+jTextField1132.getText()+"%' "));
+            jSearchTable22.setModel(TableModel.createTableVectors(con, "select distinct(term) from fees_setup where term ilike '%"+jTextField1132.getText()+"%' "));
             jSearchScrollPane22.setViewportView(jSearchTable22);
 
         }
@@ -1139,7 +1151,7 @@ btnsave.setEnabled(true);
             JOptionPane.showMessageDialog(this, "Deletion will be effected immediately");
             try {
                 con.setAutoCommit(false);
-                PreparedStatement pr=con.prepareStatement("delete from student_registration where staff_id='"+txtid.getText()+"'");
+                PreparedStatement pr=con.prepareStatement("delete from student_registration where student_id='"+txtid.getText()+"'");
                 pr.executeUpdate();
                         con.commit();
                         con.setAutoCommit(true);

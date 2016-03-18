@@ -397,7 +397,7 @@ else{
         
         
         else if(count>0){
-        System.out.println(username);
+        System.out.println("Username:   "+username);
             Statement st=connectDB.createStatement();
             ResultSet rs=st.executeQuery(sql);
             while(rs.next()){
@@ -416,7 +416,7 @@ else{
                     ResultSet log=SQLHelper.getResultset(connectDB, "select login_count from access_control where username='"+userName+"' and password='"+p+"'");
                     while(log.next()){
                     login_count=log.getInt(1);
-                    System.out.println(login_count);
+                    System.err.println("Login Count:    "+login_count);
                     }
                 if(login_count==0){
                 JOptionPane.showMessageDialog(this, "Welcome to the PETVIN MIS. \nThe system has noted that this is your first login.\nYou are therefore required "
@@ -437,8 +437,8 @@ else{
                     now=expiry.getDate(2);
                     diff=expiry.getInt(3);
                     }
-                    System.out.println("now: "+now);
-                    System.out.println("expiry: "+exp);
+                    System.out.println("Current Date: "+now);
+                    System.err.println("Password expiry date: "+exp);
                     
                     if(diff>=0){
                       JOptionPane.showMessageDialog(this, "your password has expired");

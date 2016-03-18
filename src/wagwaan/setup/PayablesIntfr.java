@@ -189,6 +189,7 @@ Connection con;
                 count=rs.getInt(1);
             }
             System.out.println("count is "+count);
+            
             if(count>0){
             JOptionPane.showMessageDialog(this, "Item '"+insert+"' exists in the database");
             jButton1.setEnabled(false);
@@ -197,8 +198,6 @@ Connection con;
             else if(count==0){
             jButton1.setEnabled(true);
             if(jTable1.getValueAt(j, 0)!=null){
-            
-        
                     pr=con.prepareStatement(sql);
                     pr.setObject(1, jTable1.getValueAt(j, 0));
                     pr.executeUpdate();

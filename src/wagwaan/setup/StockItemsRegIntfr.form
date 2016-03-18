@@ -528,7 +528,7 @@
                       <Table columnCount="8" rowCount="100">
                         <Column editable="true" title="Item Name" type="java.lang.Object"/>
                         <Column editable="true" title="Buying Price" type="java.lang.Double"/>
-                        <Column editable="true" title="Discount" type="java.lang.Double"/>
+                        <Column editable="true" title="Discount (%)" type="java.lang.Double"/>
                         <Column editable="true" title="Supplier" type="java.lang.Object"/>
                         <Column editable="true" title="Category" type="java.lang.Object"/>
                         <Column editable="true" title="Date Registered" type="java.lang.Object"/>

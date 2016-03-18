@@ -164,10 +164,10 @@ Connection con;
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void validateInfo(){
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 0)==null){
-            JOptionPane.showMessageDialog(this, "Kindly insert a subject", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        }
+//        if(jTable1.getValueAt(jTable1.getSelectedRow(), 0)==null){
+//            JOptionPane.showMessageDialog(this, "Kindly insert a subject", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//            return;
+//        }
         insertDetails();
     }
     private void insertDetails(){

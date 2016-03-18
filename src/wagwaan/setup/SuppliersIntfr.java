@@ -589,9 +589,9 @@ Connection con;
     }
     private void insertDetails(){
     PreparedStatement pr=null;
-    String sql=null;
+//    String sql=null;
     String slipNo=null;
-    sql="INSERT INTO stock_suppliers(supplier_id, supplier_names, address, phone_no, email_address, account_no, "
+    String sql="INSERT INTO stock_suppliers(supplier_id, supplier_names, address, phone_no, email_address, account_no, "
             + "account_names, date_registered, branch_name, branch_code, bank_name, credit_limit)VALUES (?, ?, ?, ?, ?, ?, ?, ?::date, ?, ?, ?, ?::numeric)";
         try {
                        ResultSet rs=SQLHelper.getResultset(con, "SELECT 'SUP'|| nextval('supplier_id_seq')");
@@ -612,6 +612,7 @@ Connection con;
             pr.setString(11, txtbankname.getText());
             pr.setObject(12, txtcredit.getText());
             pr.executeUpdate();
+            
             if(pr!=null){
             JOptionPane.showMessageDialog(this, "Insert is Successful");
             resetDetails();
@@ -746,21 +747,23 @@ private void validateUpdate(){
         txtnames.setText(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 1).toString());
         jSearchDialog21.dispose();
 //        comboclass.setSelectedItem(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 2).toString());
-        String sql="select address, phone_no, email_address, account_no, account_names, date_registered, branch_name, branch_code, bank_name, credit_limit from stock_suppliers where supplier_id='"+txtid.getText()+"'";
+        String sql="select address, phone_no, email_address, account_no, account_names, date_registered, branch_name, "
+                + "branch_code, bank_name, credit_limit from stock_suppliers where supplier_id='"+txtid.getText()+"'";
         try {
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(sql);
             while (rs.next()){
-            txtaddress.setText(rs.getString(1));
-            txtphoneno.setText(rs.getString(2));
-            txtemail.setText(rs.getString(3));
-            txtaccountno.setText(rs.getString(4));
-            txtaccountname.setText(rs.getString(5));
-            regdate.setDate(rs.getDate(6));
-            txtbranchname.setText(rs.getString(7));
-            txtbranchcode.setText(rs.getString(8));
-            txtbankname.setText(rs.getString(9));
-            txtcredit.setText((String) rs.getObject(10));
+                txtaddress.setText(rs.getString(1));
+                txtphoneno.setText(rs.getString(2));
+                txtemail.setText(rs.getString(3));
+                txtaccountno.setText(rs.getString(4));
+                txtaccountname.setText(rs.getString(5));
+                regdate.setDate(rs.getDate(6));
+                txtbranchname.setText(rs.getString(7));
+                txtbranchcode.setText(rs.getString(8));
+                txtbankname.setText(rs.getString(9));
+                double credit=rs.getDouble(10);
+                txtcredit.setText(String.valueOf(credit));
             }
         } catch (SQLException ex) {
             Logger.getLogger(SuppliersIntfr.class.getName()).log(Level.SEVERE, null, ex);
