@@ -2017,7 +2017,7 @@ return id;
     private void txtclearanceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtclearanceKeyReleased
 Character z=evt.getKeyChar();
         if(!Character.isDigit(z)){
-        JOptionPane.showMessageDialog(this, "Phone No. cannot contain alphabets");
+        JOptionPane.showMessageDialog(this, "Clearance Amount cannot contain alphabets");
         txtclearance.setText("");
         }
         double new_balance=0;

@@ -834,30 +834,30 @@ Connection con;
         validateInfo();
     }//GEN-LAST:event_btnsaveActionPerformed
     private void validateInfo(){
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
-        JOptionPane.showMessageDialog(this, "Please select the item code", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
-        JOptionPane.showMessageDialog(this, "Please input the quantity", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
-        JOptionPane.showMessageDialog(this, "Please select the order date", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
-        JOptionPane.showMessageDialog(this, "Please select the due date", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
-        JOptionPane.showMessageDialog(this, "Please select the supplier", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
-    if(txtsearch.getText().isEmpty()){
-        JOptionPane.showMessageDialog(this, "Please select the username", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
-        return;
-    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the item code", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
+//        JOptionPane.showMessageDialog(this, "Please input the quantity", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the order date", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the due date", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the supplier", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
+//    if(txtsearch.getText().isEmpty()){
+//        JOptionPane.showMessageDialog(this, "Please select the username", "Missing Variables!!", JOptionPane.INFORMATION_MESSAGE);
+//        return;
+//    }
     insertDetails();
     }
     
@@ -874,7 +874,8 @@ Connection con;
             orderNo=rs.getString(1);
             }
     for(int i=0;i<jXTable1.getRowCount();i++){
-        if(jXTable1.getValueAt(i, 0)!=null){
+        if(jXTable1.getValueAt(i, 0)!=null && jXTable1.getValueAt(i, 1)!=null && jXTable1.getValueAt(i, 2)!=null && jXTable1.getValueAt(i, 3)!=null && 
+                jXTable1.getValueAt(i, 4)!=null && jXTable1.getValueAt(i, 5)!=null && jXTable1.getValueAt(i, 6)!=null && jXTable1.getValueAt(i, 7)!=null){
             pr=con.prepareStatement(sql);
             pr.setString(1, orderNo);
             pr.setObject(2, jXTable1.getValueAt(i, 0));
@@ -943,7 +944,7 @@ Connection con;
 
     private void jTextField1133CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1133CaretUpdate
         if(jTextField1133.getCaretPosition()>3){
-            jSearchTable23.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where supplier_names ilike '%"+jTextField1133.getText()+"%' "));
+            jSearchTable23.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where supplier_names ilike '%"+jTextField1133.getText()+"%' and active=true"));
             jSearchScrollPane23.setViewportView(jSearchTable23);
         }
     }//GEN-LAST:event_jTextField1133CaretUpdate

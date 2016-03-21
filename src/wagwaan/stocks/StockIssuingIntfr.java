@@ -847,22 +847,22 @@ Connection con;
   JOptionPane.showMessageDialog(this, "Please select the receiver's username", "Missing variable", JOptionPane.INFORMATION_MESSAGE);
     return;
     }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
-    JOptionPane.showMessageDialog(this, "Please select the item code");
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
-    JOptionPane.showMessageDialog(this, "Please select the receiving department");
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
-    JOptionPane.showMessageDialog(this, "Please input the quantity issued");
-    return;
-    }
-    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 6)==null){
-    JOptionPane.showMessageDialog(this, "Please input the issue date");
-    return;
-    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the item code");
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the receiving department");
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 5)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the quantity issued");
+//    return;
+//    }
+//    if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 6)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the issue date");
+//    return;
+//    }
     insertDetails();
     }
     private void insertDetails(){
@@ -884,7 +884,8 @@ Connection con;
                     counter=no2.getString(1);
                 }
                         
-                if(jXTable1.getValueAt(i, 0)!=null){
+                if(jXTable1.getValueAt(i, 0)!=null && jXTable1.getValueAt(i, 1)!=null && jXTable1.getValueAt(i, 2)!=null && jXTable1.getValueAt(i, 3)!=null && 
+                        jXTable1.getValueAt(i, 4)!=null && jXTable1.getValueAt(i, 5)!=null && jXTable1.getValueAt(i, 6)!=null && jXTable1.getValueAt(i, 7)!=null){
                     pr=con.prepareStatement(sql);
                     pr.setObject(1, jXTable1.getValueAt(i, 0).toString());
                 pr.setObject(2, jXTable1.getValueAt(i, 2).toString());
@@ -934,6 +935,7 @@ Connection con;
     }
     txtissuer.setText("");
     txtreceiver.setText("");
+    jTextField1.setText("");
     }
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         validateSavedData();

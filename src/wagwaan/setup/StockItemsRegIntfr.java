@@ -570,6 +570,148 @@ Connection con;
 
         jXTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Item Name", "Buying Price", "Discount (%)", "Supplier", "Category", "Date Registered", "Minimum Stock Count"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jXTable1MouseClicked(evt);
+            }
+        });
+        jXTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jXTable1KeyReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jXTable1);
+        javax.swing.table.TableColumn dateEditor = jXTable1.getColumnModel().getColumn(5);
+        DateCellEditor dateCellEditor = new DateCellEditor(new DatePicker(), jXTable1);
+        dateEditor.setCellEditor(dateCellEditor);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        card2.add(jScrollPane1, gridBagConstraints);
+
+        cardPanelController.add(card2, "card2");
+
+        card3.setLayout(new java.awt.GridBagLayout());
+
+        jXTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -672,153 +814,11 @@ Connection con;
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Item Name", "Buying Price", "Discount (%)", "Supplier", "Category", "Date Registered", "Receiving Department", "Minimum Stock Count"
+                "Item Code", "Item Name", "Buying Price", "Discount", "Supplier Name", "Category", "Date Registered", "minimum stock count"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jXTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jXTable1MouseClicked(evt);
-            }
-        });
-        jXTable1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jXTable1KeyReleased(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jXTable1);
-        javax.swing.table.TableColumn dateEditor = jXTable1.getColumnModel().getColumn(5);
-        DateCellEditor dateCellEditor = new DateCellEditor(new DatePicker(), jXTable1);
-        dateEditor.setCellEditor(dateCellEditor);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        card2.add(jScrollPane1, gridBagConstraints);
-
-        cardPanelController.add(card2, "card2");
-
-        card3.setLayout(new java.awt.GridBagLayout());
-
-        jXTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Item Code", "Item Name", "Buying Price", "Discount", "Supplier Name", "Category", "Date Registered", "Receiving Department", "minimum stock count"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Double.class, java.lang.Double.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -871,7 +871,7 @@ Connection con;
         jSearchDialog22.setLocation(point);
         jSearchDialog22.show();
         }
-        if(jXTable1.getSelectedColumn()==4){
+        if(jXTable1.getSelectedColumn()==5){
         kiwi.ui.DateChooser date=new kiwi.ui.DateChooser();
         date.setVisible(true);
         }
@@ -971,7 +971,7 @@ Connection con;
             PreparedStatement pr=null;
             
             for(int i=0;i<jXTable2.getRowCount();i++){
-                String sql="UPDATE stock_items   SET item_name=?, buying_price=?::numeric(10, 2), discount=?::numeric(10, 2),    supplier_id=?, category=?, date_registered=?::date, receiving_department=?, min_stock_count=?::int WHERE item_code='"+jXTable2.getValueAt(i, 0)+"'";
+                String sql="UPDATE stock_items   SET item_name=?, buying_price=?::numeric(10, 2), discount=?::numeric(10, 2),    supplier_id=?, category=?, date_registered=?::date, min_stock_count=?::int WHERE item_code='"+jXTable2.getValueAt(i, 0)+"'";
            pr=con.prepareStatement(sql);
            if(jXTable2.getModel().getValueAt(i, 0)!=null){
             pr.setObject(1, jXTable2.getValueAt(i, 1).toString());
@@ -981,7 +981,6 @@ Connection con;
             pr.setObject(5, jXTable2.getValueAt(i, 5).toString());
             pr.setObject(6, jXTable2.getValueAt(i, 6).toString());
             pr.setObject(7, jXTable2.getValueAt(i, 7).toString());
-            pr.setObject(8, jXTable2.getValueAt(i, 8).toString());
             pr.executeUpdate();
             }
             }
@@ -1029,11 +1028,11 @@ Connection con;
         jSearchDialog24.setLocation(point);
         jSearchDialog24.show();
         }
-        if(jXTable2.getSelectedColumn()==6){
+        if(jXTable2.getSelectedColumn()==5){
         kiwi.ui.DateChooserField date=new kiwi.ui.DateChooserField();
         date.setVisible(true);
         }
-         if(jXTable2.getSelectedColumn()==7){
+         if(jXTable2.getSelectedColumn()==6){
         java.awt.Point point = jScrollPane2.getLocationOnScreen();
         jSearchDialog26.setSize(400,200);
         jSearchDialog26.setLocation(point);
@@ -1054,7 +1053,7 @@ Connection con;
         jSearchDialog23.dispose();
         try {
             Statement st=con.createStatement();
-            ResultSet rs=st.executeQuery("select buying_price, discount, supplier_id, category, date_registered, receiving_department, min_stock_count from stock_items where item_code ='"+jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)+"' ");
+            ResultSet rs=st.executeQuery("select buying_price, discount, supplier_id, category, date_registered, min_stock_count from stock_items where item_code ='"+jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)+"' ");
             while(rs.next()){
             jXTable2.setValueAt(rs.getObject(1), jXTable2.getSelectedRow(), 2);
             jXTable2.setValueAt(rs.getObject(2), jXTable2.getSelectedRow(), 3);
@@ -1062,7 +1061,7 @@ Connection con;
             jXTable2.setValueAt(rs.getObject(4), jXTable2.getSelectedRow(), 5);
             jXTable2.setValueAt(rs.getObject(5), jXTable2.getSelectedRow(), 6);
             jXTable2.setValueAt(rs.getObject(6), jXTable2.getSelectedRow(), 7);
-            jXTable2.setValueAt(rs.getObject(7), jXTable2.getSelectedRow(), 8);
+//            jXTable2.setValueAt(rs.getObject(7), jXTable2.getSelectedRow(), 8);
             }
             /*for(int i=0;i<jSearchTable23.getRowCount();i++){
                 for(int r=0;jSearchTable23.getColumnCount();r++){
@@ -1239,8 +1238,8 @@ Connection con;
             con.setAutoCommit(false);
             
             
-            sql="INSERT INTO stock_items(item_code, item_name, buying_price, discount,  supplier_id, category, date_registered, receiving_department, min_stock_count)"
-                    + "VALUES (?, ?, ?::numeric(10, 2), ?::numeric(10, 2), ?,  ?, ?::date, ?, ?::int)";
+            sql="INSERT INTO stock_items(item_code, item_name, buying_price, discount,  supplier_id, category, date_registered, min_stock_count)"
+                    + "VALUES (?, ?, ?::numeric(10, 2), ?::numeric(10, 2), ?,  ?, ?::date, ?::int)";
             pr=con.prepareStatement(sql);
             
             for(int i=0;i<jXTable1.getRowCount();i++){
@@ -1251,7 +1250,7 @@ Connection con;
                     pr.setString(1, itemCode);
                 if (jXTable1.getModel().getValueAt(i,0) != null && jXTable1.getModel().getValueAt(i,1) != null && jXTable1.getModel().getValueAt(i,2) != null && 
                         jXTable1.getModel().getValueAt(i,3) != null && jXTable1.getModel().getValueAt(i,4) != null && jXTable1.getModel().getValueAt(i,5) != null && 
-                         jXTable1.getModel().getValueAt(i,6) != null && jXTable1.getModel().getValueAt(i,7) != null){
+                         jXTable1.getModel().getValueAt(i,6) != null){
                     pr.setObject(2, jXTable1.getValueAt(i, 0).toString());
                     pr.setObject(3, jXTable1.getValueAt(i, 1).toString());
                     pr.setObject(4, jXTable1.getValueAt(i, 2).toString());
@@ -1259,7 +1258,7 @@ Connection con;
                     pr.setObject(6, jXTable1.getValueAt(i, 4).toString());
                     pr.setObject(7, jXTable1.getValueAt(i, 5).toString());
                     pr.setObject(8, jXTable1.getValueAt(i, 6).toString());
-                    pr.setObject(9, jXTable1.getValueAt(i, 7).toString());
+//                    pr.setObject(9, jXTable1.getValueAt(i, 7).toString());
                     pr.executeUpdate();
                 }
             }

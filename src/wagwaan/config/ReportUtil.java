@@ -247,7 +247,7 @@ public class ReportUtil {
     public static void addCenteredTitlePage(Document document, Connection connectDB) throws SQLException, IOException, BadElementException, DocumentException {
         byte[] imageData = null;
         String header = null;
-        boolean enabled;
+        boolean enabled=false;
         String web_url=null, header_h=null, phone_no=null;
         com.lowagie.text.Image logo = null;
         ResultSet rset = SQLHelper.getResultset(connectDB, "select header_name,current_date,company_logo,enable_logo, web_address, "
@@ -260,7 +260,12 @@ public class ReportUtil {
             header_h=rset.getString(6);
             phone_no=rset.getString(7);
         }
-        if (imageData != null) {
+//        if (imageData != null) {
+//            logo = Image.getInstance(imageData);
+//            logo.scaleToFit(70f, 60f);
+//            logo.setAlignment(Image.ALIGN_CENTER);
+//        }
+        if (enabled==true) {
             logo = Image.getInstance(imageData);
             logo.scaleToFit(70f, 60f);
             logo.setAlignment(Image.ALIGN_CENTER);

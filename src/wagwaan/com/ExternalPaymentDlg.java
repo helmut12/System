@@ -133,7 +133,7 @@ public class ExternalPaymentDlg extends javax.swing.JDialog {
         jLabel1.setText("Select Invoice No.");
         jPanel1.add(jLabel1, new java.awt.GridBagConstraints());
 
-        jButton2.setText("SAVE");
+        jButton2.setText("OK");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);

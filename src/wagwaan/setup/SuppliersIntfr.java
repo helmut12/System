@@ -589,36 +589,57 @@ Connection con;
     }
     private void insertDetails(){
     PreparedStatement pr=null;
-//    String sql=null;
+    int count=0;
     String slipNo=null;
     String sql="INSERT INTO stock_suppliers(supplier_id, supplier_names, address, phone_no, email_address, account_no, "
             + "account_names, date_registered, branch_name, branch_code, bank_name, credit_limit)VALUES (?, ?, ?, ?, ?, ?, ?, ?::date, ?, ?, ?, ?::numeric)";
         try {
-                       ResultSet rs=SQLHelper.getResultset(con, "SELECT 'SUP'|| nextval('supplier_id_seq')");
-            while(rs.next()){
-              slipNo=rs.getString(1);
-    }
-            pr=con.prepareStatement(sql);
-            pr.setString(1, slipNo);
-            pr.setString(2, txtnames.getText());
-            pr.setString(3, txtaddress.getText());
-            pr.setString(4, txtphoneno.getText());
-            pr.setString(5, txtemail.getText());
-            pr.setString(6, txtaccountno.getText());
-            pr.setString(7, txtaccountname.getText());
-            pr.setObject(8, regdate.getDate().toString());
-            pr.setString(9, txtbranchname.getText());
-            pr.setString(10, txtbranchcode.getText());
-            pr.setString(11, txtbankname.getText());
-            pr.setObject(12, txtcredit.getText());
-            pr.executeUpdate();
             
-            if(pr!=null){
-            JOptionPane.showMessageDialog(this, "Insert is Successful");
-            resetDetails();
+            con.setAutoCommit(false);
+            ResultSet rs=SQLHelper.getResultset(con, "SELECT 'SUP'|| nextval('supplier_id_seq')");
+            while(rs.next()){
+            slipNo=rs.getString(1);
             }
+            ResultSet rs1=SQLHelper.getResultset(con, "select count(supplier_id) from stock_suppliers where supplier_id='"+txtid.getText()+"'");
+            while(rs1.next()){
+                count=rs1.getInt(1);
+            }
+            if(count>0){
+                JOptionPane.showMessageDialog(this, "Supplier ID "+txtid.getText()+" already exists", "Data Duplication flagging!!", JOptionPane.INFORMATION_MESSAGE);
+                btnsave.setEnabled(false);
+            }
+            else{
+                btnsave.setEnabled(true);
+                pr=con.prepareStatement(sql);
+                pr.setString(1, slipNo);
+                pr.setString(2, txtnames.getText());
+                pr.setString(3, txtaddress.getText());
+                pr.setString(4, txtphoneno.getText());
+                pr.setString(5, txtemail.getText());
+                pr.setString(6, txtaccountno.getText());
+                pr.setString(7, txtaccountname.getText());
+                pr.setObject(8, regdate.getDate().toString());
+                pr.setString(9, txtbranchname.getText());
+                pr.setString(10, txtbranchcode.getText());
+                pr.setString(11, txtbankname.getText());
+                pr.setObject(12, txtcredit.getText());
+                pr.executeUpdate();
+                
+                con.commit();
+                con.setAutoCommit(true);
+                if(pr!=null){
+                JOptionPane.showMessageDialog(this, "Insert is Successful");
+                resetDetails();
+                }
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(SuppliersIntfr.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            con.rollback();
+        } catch (SQLException ex1) {
+            Logger.getLogger(SuppliersIntfr.class.getName()).log(Level.SEVERE, null, ex1);
+        }
         }
     }
     
@@ -686,16 +707,16 @@ private void validateUpdate(){
 //        if(btnedit.getText().equals("UPDATE")){
         this.btnedit.setVisible(false);
         btnupdate.setVisible(true);
+        btnsave.setEnabled(false);
         enableComponents();
         
 //        }
     }//GEN-LAST:event_btneditActionPerformed
     private void updateExisting(){
     int count=0;
-    String sql=null;
-//    String sql2=null;
-    sql="select count(supplier_id) from stock_suppliers where supplier_id='"+txtid.getText()+"'";
+    String sql="select count(supplier_id) from stock_suppliers where supplier_id='"+txtid.getText()+"'";
         try {
+            con.setAutoCommit(false);
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(sql);
             while(rs.next()){
@@ -719,16 +740,26 @@ private void validateUpdate(){
             pr.setString(11, txtbankname.getText());
             pr.setObject(12, txtcredit.getText());
             pr.executeUpdate();
+            con.commit();
+            con.setAutoCommit(true);
+            
             if(pr!=null){
             JOptionPane.showMessageDialog(this, "Update for supplier "+txtid.getText()+" is Successful");
             resetDetails();
             }
             }
             else{
+                JOptionPane.showMessageDialog(this, "Supplier ID "+txtid.getText()+" does not exist. The system will \n "
+                    + "proceed on to automatically register this supplier", "Non-existence expcetion handling", JOptionPane.INFORMATION_MESSAGE);
             validateSavedData();
             }
         } catch (SQLException ex) {
             Logger.getLogger(SuppliersIntfr.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            con.rollback();
+        } catch (SQLException ex1) {
+            Logger.getLogger(SuppliersIntfr.class.getName()).log(Level.SEVERE, null, ex1);
+        }
         }
     }
     private void searchButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButton1ActionPerformed

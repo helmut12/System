@@ -5,11 +5,9 @@
  */
 package wagwaan.com;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import static java.awt.SystemColor.desktop;
 import wagwaan.setup.StudentRegisterIntfr;
 import wagwaan.setup.LocationIntfr;
 import wagwaan.setup.StaffRegisterIntfr;
@@ -31,9 +29,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import wagwaan.config.SQLHelper;
 import wagwaan.ops.PasswordResetting;
@@ -84,6 +79,18 @@ private final Image backImage = new ImageIcon(this.getClass().getResource("/wagw
               g2d.drawImage(backImage, (int)mw, (int) mh, this);
            }
         }    
+        public String headerName(){
+        String name=null;
+    try {
+        ResultSet rs=SQLHelper.getResultset(connectDB, "select header_name from pb_header");
+        while(rs.next()){
+            name=rs.getString(1);
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(SysMain.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        return name;
+        }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,7 +155,8 @@ private final Image backImage = new ImageIcon(this.getClass().getResource("/wagw
         jMenuItem12 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
-        setTitle("LEGIT SYSTEM INC.");
+        setTitle(headerName()
+        );
         setIconImage(new ImageIcon(getClass().getResource("/wagwaan/img/new.png")).getImage());
         setName("MainFRM"); // NOI18N
         addWindowListener(new java.awt.event.WindowAdapter() {

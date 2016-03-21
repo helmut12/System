@@ -16,9 +16,7 @@ import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfCell;
 import java.awt.Desktop;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import wagwaan.config.ReportUtil;
@@ -141,18 +139,14 @@ public class ActiveSuppliersPdf implements java.lang.Runnable{
                 try {
                     
                     com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
+                    ReportUtil.addCenteredTitlePage(docPdf, connectDB);
                     
-                    
-                    String compName = null;
                     String date = null;
                     try {
                       java.sql.Statement st3 = connectDB.createStatement();
                         java.sql.Statement st4 = connectDB.createStatement();
                         
-                        java.sql.ResultSet rset2 = st3.executeQuery("SELECT header_name from pb_header");
                         java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
-                        while(rset2.next())
-                            compName = rset2.getObject(1).toString();
                         
                         while(rset4.next())
                             date = rset4.getObject(1).toString();

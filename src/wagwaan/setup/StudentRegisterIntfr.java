@@ -736,78 +736,94 @@ Connection con;
 //        return;
 //    }
     if(txtfname.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the first name!!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this,  "Please input the first name!!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtmname.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the middle name!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this,  "Please input the middle name!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtlname.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the last name!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the last name!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(dob.getDate()==null){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the student's date of birth !", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the student's date of birth !", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtresidence.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the student's residence!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the student's residence!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(combogender.getSelectedItem()==null){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the student's gender!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the student's gender!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(admdate.getDate()==null){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the student admission date!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the student admission date!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtaddress.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the student's address!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this,  "Please input the student's address!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtparentnames.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the parent/guardian's names", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the parent/guardian's names", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
     if(txtparentphoneno.getText().isEmpty()){
-    JOptionPane.showMessageDialog(this, "Caution!", "Please input the parent/guardian's phone no.!", JOptionPane.ERROR_MESSAGE);
+    JOptionPane.showMessageDialog(this, "Please input the parent/guardian's phone no.!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
     }
-//        insertDetails();
+        insertDetails();
     }
     
     private void insertDetails(){
     PreparedStatement pr=null;
+    int count=0;
         String sql="INSERT INTO student_registration(student_id, first_name, middle_name, last_name, dob, gender, admission_date, "
                 + "residence, address, parents_guardian_names, parent_guardian_phoneno, students_class, entry_term)\n" +
 "    VALUES (?, ?, ?, ?, ?::date, ?,  ?::date, ?, ?, ?,  ?, ?, ?)";
+        
     try {
         con.setAutoCommit(false);
-        pr=con.prepareStatement(sql);
-        pr.setString(1, getID());
-        pr.setString(2, txtfname.getText());
-        pr.setString(3, txtmname.getText());
-        pr.setString(4, txtlname.getText());
-        pr.setObject(5, dob.getDate().toString());
-        pr.setString(6, combogender.getSelectedItem().toString());
-        pr.setObject(7, admdate.getDate().toString());
-        pr.setString(8, txtresidence.getText());
-        pr.setString(9, txtaddress.getText());
-        pr.setString(10, txtparentnames.getText());
-        pr.setString(11, txtparentphoneno.getText());
-        pr.setString(12, jComboBox1.getSelectedItem().toString());
-        pr.setString(13, txtid1.getText());
-        pr.executeUpdate();
-        con.commit();
-        con.setAutoCommit(true);
-        if(pr!=null){
-            JOptionPane.showMessageDialog(this, "Insert is Successful");
-        resetDetails();
+        ResultSet rs=SQLHelper.getResultset(con, "select count(student_id) from student_registration where student_id='"+txtid.getText()+"'");
+        while(rs.next()){
+            count=rs.getInt(1);
         }
-        else
-            JOptionPane.showMessageDialog(this, "There's a problem with the entries");
+        if(count>0){
+            JOptionPane.showMessageDialog(this, "Student ID "+txtid.getText()+" already exists.", title, HEIGHT);
+            btnsave.setEnabled(false);
+        }
+        else{
+            btnsave.setEnabled(true);
+            
+            pr=con.prepareStatement(sql);
+            pr.setString(1, getID());
+            pr.setString(2, txtfname.getText());
+            pr.setString(3, txtmname.getText());
+            pr.setString(4, txtlname.getText());
+            pr.setObject(5, dob.getDate().toString());
+            pr.setString(6, combogender.getSelectedItem().toString());
+            pr.setObject(7, admdate.getDate().toString());
+            pr.setString(8, txtresidence.getText());
+            pr.setString(9, txtaddress.getText());
+            pr.setString(10, txtparentnames.getText());
+            pr.setString(11, txtparentphoneno.getText());
+            pr.setString(12, jComboBox1.getSelectedItem().toString());
+            pr.setString(13, txtid1.getText());
+            pr.executeUpdate();
+            con.commit();
+            con.setAutoCommit(true);
+            if(pr!=null){
+                JOptionPane.showMessageDialog(this, "Insert is Successful");
+            resetDetails();
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "There's a problem with the entries");
+            }
+        }
+        
     } catch (SQLException ex) {
         try {
             con.rollback();
@@ -819,7 +835,7 @@ Connection con;
     }
     private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
         validateSavedData();
-        insertDetails();
+        
     }//GEN-LAST:event_btnsaveActionPerformed
     public String getID(){
 String id=null;
@@ -888,15 +904,25 @@ return id;
     updateDetails();
     }
     private void updateDetails(){
-        
+        int count=0;
     PreparedStatement pr=null;
     String sql="UPDATE student_registration  SET student_id=?, first_name=?, middle_name=?, last_name=?, dob=?::date, gender=?, "
                 + "admission_date=?::date, residence=?, address=?, parents_guardian_names=?, parent_guardian_phoneno=?, "
                 + "students_class=?, entry_term=?  WHERE student_id='"+txtid.getText()+"'";
         
     try {
-        pr=con.prepareStatement(sql);
-    
+        con.setAutoCommit(false);
+        ResultSet rs=SQLHelper.getResultset(con, "select count(student_id) from student_registration where student_id='"+txtid.getText()+"'");
+        while(rs.next()){
+            count=rs.getInt(1);
+        }
+        if(count==0){
+            JOptionPane.showMessageDialog(this, "Student ID "+txtid.getText()+" does not exist. The system will \n "
+                    + "proceed on to automatically register this student", "Non-existence exception handling", JOptionPane.INFORMATION_MESSAGE);
+            validateSavedData();
+        }
+        else{
+            pr=con.prepareStatement(sql);
         pr.setString(1, txtid.getText());
         pr.setString(2, txtfname.getText());
         pr.setString(3, txtmname.getText());
@@ -909,23 +935,33 @@ return id;
         pr.setString(10, txtparentnames.getText());
         pr.setString(11, txtparentphoneno.getText());
         pr.setString(12, jComboBox1.getSelectedItem().toString());
-        pr.setString(13, txtid.getText());
+        pr.setString(13, txtid1.getText());
         pr.executeUpdate();    
+        con.commit();
+        con.setAutoCommit(true);
         
-        if(pr!=null)
-            JOptionPane.showMessageDialog(this, "Update Successul");
-        resetDetails();
+        if(pr!=null){
+            JOptionPane.showMessageDialog(this, "Update is Successful");
+            resetDetails();
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "There is a problem");
+        }
+        }
+        
     } catch (SQLException ex) {
         Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex1);
+            }
     }
     }
 
 
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
-//        searchButton1.setEnabled(false);
-        
-//            txtid.setEditable(true);
-//btnupdate.setText("UPDATE");
+
         int count=0;
         PreparedStatement pr=null;
         
@@ -939,11 +975,8 @@ return id;
         count=rs.getInt(1);
         }
         if(count<=0){
-//            int option=JOptionPane.showMessageDialog(this, "Student "+txtid.getText()+" does not exist. \nWould you wish to register Him/Her?", "Non-existent information found", JOptionPane.YES_NO_OPTION);
-//            
-//            if(option==JOptionPane.YES_OPTION){
-//                validateSavedData();
-//            }
+            JOptionPane.showMessageDialog(this, "Student ID "+txtid.getText()+" does not exist. The system will \n "
+                    + "proceed on to automatically register this student", "Non-existence exception handling", JOptionPane.INFORMATION_MESSAGE);
             validateSavedData();
         }
         else{

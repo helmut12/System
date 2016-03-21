@@ -9,6 +9,7 @@ package wagwaan.reports;
 //import com.ams.ohs0.*;
 //import com.afrisoftech.utils.AMSUtility;
 //import com.ams.common.reports.ReportUtil;
+import com.lowagie.text.BadElementException;
 import wagwaan.config.AMSUtility;
 import wagwaan.config.DBObject;
 import wagwaan.config.ReportUtil;
@@ -22,6 +23,8 @@ import java.awt.Desktop;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author Maurice
@@ -135,7 +138,6 @@ public class FeesStatementPdf implements java.lang.Runnable {
                     com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
                     
                     
-                    String compName = null;
                     String date = null;
                     try {
                         java.sql.Statement st4 = connectDB.createStatement();
@@ -156,7 +158,7 @@ public class FeesStatementPdf implements java.lang.Runnable {
                     
                     
                     docPdf.open();
-                    ReportUtil.addTitlePage(docPdf, connectDB);
+                    ReportUtil.addCenteredTitlePage(docPdf, connectDB);
                     
                     try {
                         
@@ -404,6 +406,10 @@ public class FeesStatementPdf implements java.lang.Runnable {
                     
                     javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), fnfExec.getMessage());
                     
+                } catch (SQLException ex) {
+                    Logger.getLogger(FeesStatementPdf.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (BadElementException ex) {
+                    Logger.getLogger(FeesStatementPdf.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } catch(com.lowagie.text.DocumentException lwDocexec) {
                 

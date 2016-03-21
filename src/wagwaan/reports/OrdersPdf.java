@@ -18,6 +18,8 @@ import java.sql.*;
 import java.awt.Desktop;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import wagwaan.config.ReportUtil;
+import static wagwaan.reports.IndividualReportCardPdf.connectDB;
 
 /**
  *
@@ -133,24 +135,13 @@ public class OrdersPdf implements java.lang.Runnable{
                     com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
                     
                     
-                    String compName = null;
                     String date = null;
                     try {
-                      java.sql.Statement st3 = connectDB.createStatement();
                         java.sql.Statement st4 = connectDB.createStatement();
                         
-                        java.sql.ResultSet rset2 = st3.executeQuery("SELECT header_name from pb_header");
                         java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
-                        while(rset2.next())
-                            compName = rset2.getObject(1).toString();
-                        
                         while(rset4.next())
                             date = rset4.getObject(1).toString();
-                        
-                        com.lowagie.text.HeaderFooter headerFoter = new com.lowagie.text.HeaderFooter(new Phrase(""+compName+""),false);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 14, Font.BOLDITALIC,java.awt.Color.blue)));
-                        headerFoter.setAlignment(com.lowagie.text.HeaderFooter.ALIGN_CENTER);
-                        headerFoter.setRight(5);
-                        docPdf.setHeader(headerFoter);
                         
                     } catch(java.sql.SQLException SqlExec) {
                         
@@ -167,7 +158,7 @@ public class OrdersPdf implements java.lang.Runnable{
                     
                     
                     try {
-                        
+                    ReportUtil.addCenteredTitlePage(docPdf, connectDB);    
                         
                         com.lowagie.text.pdf.PdfPTable table = new com.lowagie.text.pdf.PdfPTable(10);
                         

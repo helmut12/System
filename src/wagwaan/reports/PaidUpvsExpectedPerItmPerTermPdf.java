@@ -152,10 +152,6 @@ public class PaidUpvsExpectedPerItmPerTermPdf implements java.lang.Runnable{
                         while(rset4.next()){
                             date = rset4.getObject(1).toString();
                         }
-//                        com.lowagie.text.HeaderFooter headerFoter = new com.lowagie.text.HeaderFooter(new Phrase(""+compName+""),false);// FontFactory.getFont(com.lowagie.text.FontFactory.HELVETICA, 14, Font.BOLDITALIC,java.awt.Color.blue)));
-//                        headerFoter.setAlignment(com.lowagie.text.HeaderFooter.ALIGN_CENTER);
-//                        headerFoter.setRight(5);
-//                        docPdf.setHeader(headerFoter);
                         
                     } catch(java.sql.SQLException SqlExec) {
                         

@@ -11,6 +11,7 @@ package wagwaan.reports;
  * @author Helmut
  */
 
+import com.lowagie.text.BadElementException;
 import wagwaan.config.AMSUtility;
 import wagwaan.config.DBObject;
 import com.lowagie.text.Font;
@@ -19,12 +20,11 @@ import com.lowagie.text.PageSize;
 import com.lowagie.text.Phrase;
 import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfCell;
-import java.sql.*;
 import java.awt.Desktop;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import wagwaan.config.ReportUtil;
-import static wagwaan.reports.PaidUpvsExpectedIncomePdf.connectDB;
 
 
 public class StaffRegPdf implements java.lang.Runnable{
@@ -136,17 +136,11 @@ public class StaffRegPdf implements java.lang.Runnable{
                     com.lowagie.text.pdf.PdfWriter.getInstance(docPdf, new java.io.FileOutputStream(tempFile));
                     
                     
-                    String compName = null;
                     String date = null;
                     try {
-                      java.sql.Statement st3 = connectDB.createStatement();
                         java.sql.Statement st4 = connectDB.createStatement();
                         
-                        java.sql.ResultSet rset2 = st3.executeQuery("SELECT header_name from pb_header");
                         java.sql.ResultSet rset4 = st4.executeQuery("SELECT date(now()) as Date");
-                        while(rset2.next())
-                            compName = rset2.getObject(1).toString();
-                        
                         while(rset4.next())
                             date = rset4.getObject(1).toString();
                         
@@ -168,7 +162,7 @@ public class StaffRegPdf implements java.lang.Runnable{
                     
                     docPdf.open();
                     
-                    ReportUtil.addTitlePage(docPdf, connectDB);
+                    ReportUtil.addCenteredTitlePage(docPdf, connectDB);
                     try {
                         
                         
@@ -312,6 +306,10 @@ public class StaffRegPdf implements java.lang.Runnable{
                     
                     javax.swing.JOptionPane.showMessageDialog(new javax.swing.JFrame(), fnfExec.getMessage());
                     
+                } catch (SQLException ex) {
+                    Logger.getLogger(StaffRegPdf.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (BadElementException ex) {
+                    Logger.getLogger(StaffRegPdf.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } catch(com.lowagie.text.DocumentException lwDocexec) {
                 

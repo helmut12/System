@@ -795,41 +795,41 @@ Connection con;
             return;
         }
 //        int i=0;
-        for(int i=0;i<jTable1.getRowCount();i++){
+//        for(int i=0;i<jTable1.getRowCount();i++){
 //            if(jTable1.getValueAt(i, 0)==null){
 //                JOptionPane.showMessageDialog(this, "Please select the student's ID", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
 //                return;
 //            }
-            if(jTable1.getValueAt(i, 0)!=null){
-            
-            if(jTable1.getValueAt(i, 1)==null){
-                JOptionPane.showMessageDialog(this, "Please select the student's Names", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if(jTable1.getValueAt(i, 2)==null){
-                JOptionPane.showMessageDialog(this, "Please select the subject ID ", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if(jTable1.getValueAt(i, 3)==null){
-                JOptionPane.showMessageDialog(this, "Please select the subject Name", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if(jTable1.getValueAt(i, 4)==null){
-                JOptionPane.showMessageDialog(this, "Please select the exam level ID", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if(jTable1.getValueAt(i, 5)==null){
-                JOptionPane.showMessageDialog(this, "Please select the exam level", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-            if(jTable1.getValueAt(i, 6)==null){
-                JOptionPane.showMessageDialog(this, "Please input the subject score", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
-                return;
-            }
-//            i++;
-        }
+//            if(jTable1.getValueAt(i, 0)!=null){
+//            
+//            if(jTable1.getValueAt(i, 1)==null){
+//                JOptionPane.showMessageDialog(this, "Please select the student's Names", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+//            if(jTable1.getValueAt(i, 2)==null){
+//                JOptionPane.showMessageDialog(this, "Please select the subject ID ", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+//            if(jTable1.getValueAt(i, 3)==null){
+//                JOptionPane.showMessageDialog(this, "Please select the subject Name", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+//            if(jTable1.getValueAt(i, 4)==null){
+//                JOptionPane.showMessageDialog(this, "Please select the exam level ID", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+//            if(jTable1.getValueAt(i, 5)==null){
+//                JOptionPane.showMessageDialog(this, "Please select the exam level", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+//            if(jTable1.getValueAt(i, 6)==null){
+//                JOptionPane.showMessageDialog(this, "Please input the subject score", "Missing variables", JOptionPane.INFORMATION_MESSAGE);
+//                return;
+//            }
+////            i++;
+//        }
 //            if(jTable1.getValueAt(i, i))
-        }
+//        }
         
         if(dateChooserField1.getDate()==null){
             JOptionPane.showMessageDialog(this, "Please select today's date from the date component", "missing variables!!", JOptionPane.INFORMATION_MESSAGE);
@@ -863,7 +863,8 @@ Connection con;
                         def.removeRow(i);
                     }
                     else if(count<=0){
-                        if(jTable1.getValueAt(i, 0)!=null){
+                        if(jTable1.getValueAt(i, 0)!=null && jTable1.getValueAt(i, 1)!=null && jTable1.getValueAt(i, 2)!=null && jTable1.getValueAt(i, 3)!=null && 
+                                jTable1.getValueAt(i, 4)!=null && jTable1.getValueAt(i, 5)!=null && jTable1.getValueAt(i, 6)!=null && jTable1.getValueAt(i, 7)!=null){
                     
                             pr=con.prepareStatement(sql);
                             pr.setObject(1, jTable1.getValueAt(i, 0));

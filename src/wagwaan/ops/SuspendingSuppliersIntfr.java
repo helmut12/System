@@ -44,12 +44,6 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
         jSearchTable29 = new javax.swing.JTable();
         jButton529 = new javax.swing.JButton();
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jSearchDialog29 = new javax.swing.JDialog();
-        jSearchPanel30 = new javax.swing.JPanel();
-        jTextField1140 = new javax.swing.JTextField();
-        jSearchScrollPane30 = new javax.swing.JScrollPane();
-        jSearchTable30 = new javax.swing.JTable();
-        jButton530 = new javax.swing.JButton();
         cardController = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -157,80 +151,6 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
         gridBagConstraints.weighty = 1.0;
         jSearchDialog28.getContentPane().add(jSearchPanel29, gridBagConstraints);
 
-        jSearchDialog29.setModal(true);
-        jSearchDialog29.setUndecorated(true);
-        jSearchDialog29.getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        jSearchPanel30.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jSearchPanel30.setLayout(new java.awt.GridBagLayout());
-
-        jTextField1140.addCaretListener(new javax.swing.event.CaretListener() {
-            public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                jTextField1140CaretUpdate(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
-        jSearchPanel30.add(jTextField1140, gridBagConstraints);
-
-        jSearchTable30.setToolTipText("");
-        jSearchTable30.setShowHorizontalLines(false);
-        /*javax.swing.table.TableColumn column = null;
-
-        for (int i = 0; i < 4; i++) {
-
-            column = jSearchTable2.getColumnModel().getColumn(i);
-
-            if (i == 1) {
-
-                column.setPreferredWidth(400);
-                //sport column is bigger
-            } else {
-
-                column.setPreferredWidth(200);
-
-            }
-        }
-        */
-        jSearchTable30.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jSearchTable30MouseClicked(evt);
-            }
-        });
-        jSearchScrollPane30.setViewportView(jSearchTable30);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 20.0;
-        jSearchPanel30.add(jSearchScrollPane30, gridBagConstraints);
-
-        jButton530.setText("Close");
-        jButton530.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton530ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        jSearchPanel30.add(jButton530, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        jSearchDialog29.getContentPane().add(jSearchPanel30, gridBagConstraints);
-
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
@@ -239,6 +159,7 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
 
         cardController.setLayout(new java.awt.CardLayout());
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("SUSPENDING SUPPLIER"));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -355,6 +276,7 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
 
         cardController.add(jPanel1, "card2");
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("REACTIVATING SUPPLIER"));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         jLabel4.setText("Select supplier ID");
@@ -519,17 +441,36 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1139CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1139CaretUpdate
-        if(jTextField1139.getCaretPosition()>3){
-            jSearchTable29.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where active=true and "
+        if(buttonGroup1.getSelection()==null){
+            JOptionPane.showMessageDialog(this, "Kindly select whether you want to suspend or reactivate a supplier");
+            return;
+        }
+        else if(jTextField1139.getCaretPosition()>3){
+            if(jRadioButton2.isSelected()){
+                jSearchTable29.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where active=true and "
                     + "supplier_names ilike '%"+jTextField1139.getText()+"%'"));
             jSearchScrollPane29.setViewportView(jSearchTable29);
+            }
+            else if(jRadioButton1.isSelected()){
+                jSearchTable29.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where active=false and "
+                    + "supplier_names ilike '%"+jTextField1139.getText()+"%'"));
+            jSearchScrollPane29.setViewportView(jSearchTable29);
+            }
         }
     }//GEN-LAST:event_jTextField1139CaretUpdate
 
     private void jSearchTable29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTable29MouseClicked
-        jTextField1.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 0).toString());
-        jTextField2.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 1).toString());
-        jSearchDialog28.dispose();
+        if(jRadioButton1.isSelected()){
+            jTextField4.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 0).toString());
+            jTextField3.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 1).toString());
+            jSearchDialog28.dispose();
+        }
+        else if(jRadioButton2.isSelected()){
+            jTextField1.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 0).toString());
+            jTextField2.setText(jSearchTable29.getValueAt(jSearchTable29.getSelectedRow(), 1).toString());
+            jSearchDialog28.dispose();
+        }
+        
     }//GEN-LAST:event_jSearchTable29MouseClicked
 
     private void jButton529ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton529ActionPerformed
@@ -537,7 +478,14 @@ public class SuspendingSuppliersIntfr extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton529ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AMSUtility.showSearchDialog(jTextField1, jSearchDialog28);
+        if(buttonGroup1.getSelection()==null){
+            JOptionPane.showMessageDialog(this, "Kindly select whether you want to suspend or reactivate a supplier");
+            return;
+        }
+        else{
+            AMSUtility.showSearchDialog(jTextField1, jSearchDialog28);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -673,7 +621,8 @@ private void resetDetails2(){
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        AMSUtility.showSearchDialog(jTextField4, jSearchDialog29);
+        
+        AMSUtility.showSearchDialog(jTextField4, jSearchDialog28);
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jRadioButton2ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton2ItemStateChanged
@@ -693,23 +642,6 @@ private void resetDetails2(){
         cl.show(cardController, "card3");
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
 
-    private void jTextField1140CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1140CaretUpdate
-        if(jTextField1140.getCaretPosition()>3){
-            jSearchTable30.setModel(TableModel.createTableVectors(con, "select supplier_id, supplier_names from stock_suppliers where active=false and supplier_names ilike '%"+jTextField1140.getText()+"%'"));
-            jSearchScrollPane30.setViewportView(jSearchTable30);
-        }
-    }//GEN-LAST:event_jTextField1140CaretUpdate
-
-    private void jSearchTable30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jSearchTable30MouseClicked
-        jTextField4.setText(jSearchTable30.getValueAt(jSearchTable30.getSelectedRow(), 0).toString());
-        jTextField3.setText(jSearchTable30.getValueAt(jSearchTable30.getSelectedRow(), 1).toString());
-        jSearchDialog29.dispose();
-    }//GEN-LAST:event_jSearchTable30MouseClicked
-
-    private void jButton530ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton530ActionPerformed
-        jSearchDialog29.dispose();
-    }//GEN-LAST:event_jButton530ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -720,7 +652,6 @@ private void resetDetails2(){
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton529;
-    private javax.swing.JButton jButton530;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -742,16 +673,11 @@ private void resetDetails2(){
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JDialog jSearchDialog28;
-    private javax.swing.JDialog jSearchDialog29;
     private javax.swing.JPanel jSearchPanel29;
-    private javax.swing.JPanel jSearchPanel30;
     private javax.swing.JScrollPane jSearchScrollPane29;
-    private javax.swing.JScrollPane jSearchScrollPane30;
     private javax.swing.JTable jSearchTable29;
-    private javax.swing.JTable jSearchTable30;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField1139;
-    private javax.swing.JTextField jTextField1140;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

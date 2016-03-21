@@ -386,7 +386,7 @@ private final Connection con;
     private void jTextField1132CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1132CaretUpdate
         if(jTextField1132.getCaretPosition()>3){
 
-            jSearchTable22.setModel(TableModel.createTableVectors(con, "select current_term_id from term_fees_setup where current_term_id ilike '%"+jTextField1132.getText()+"%' and current_class='"+comboclass.getSelectedItem()+"'"));
+            jSearchTable22.setModel(TableModel.createTableVectors(con, "select distinct(term) from fees_setup where term ilike '%"+jTextField1132.getText()+"%' and class='"+comboclass.getSelectedItem()+"'"));
             jSearchScrollPane22.setViewportView(jSearchTable22);
 
         }

@@ -190,7 +190,7 @@ Connection con;
     private void jTextField1131CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1131CaretUpdate
         if(jTextField1131.getCaretPosition()>2){
             //select current_term_id, current_class from term_fees_setup where current_term_id ilike '%"+jTextField1131.getText()+"%'
-            jSearchTable21.setModel(wagwaan.config.TableModel.createTableVectors(con, "select distinct(current_term_id) from term_fees_setup where current_term_id ilike '%"+jTextField1131.getText()+"%' "));
+            jSearchTable21.setModel(wagwaan.config.TableModel.createTableVectors(con, "select distinct(term) from fees_setup where term ilike '%"+jTextField1131.getText()+"%' "));
             jSearchScrollPane21.setViewportView(jSearchTable21);
 
         }

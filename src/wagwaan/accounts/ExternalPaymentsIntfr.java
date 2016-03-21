@@ -801,7 +801,9 @@ Connection con;
                     invoice_no=rs.getString(1);
                 }
                 for(int i=0;i<jTable1.getRowCount();i++){
-                    if(jTable1.getValueAt(i, 0)!=null && jTable1.getValueAt(i, 7)==Boolean.TRUE){
+                    if(jTable1.getValueAt(i, 0)!=null && jTable1.getValueAt(i, 7)==Boolean.TRUE && jTable1.getValueAt(i, 1)!=null && jTable1.getValueAt(i, 2)!=null && 
+                            jTable1.getValueAt(i, 3)!=null && jTable1.getValueAt(i, 4)!=null && jTable1.getValueAt(i, 5)!=null && jTable1.getValueAt(i, 6)!=null && 
+                            jTable1.getValueAt(i, 8)!=null){
                         pr=con.prepareStatement(sql);
                         pr.setObject(1, jTextField1.getText());
                         pr.setObject(2, jTable1.getValueAt(i, 1));

@@ -74,7 +74,7 @@ Connection con;
         jButton2 = new javax.swing.JButton();
         btnsave = new javax.swing.JButton();
         update = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnedit = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -468,10 +468,10 @@ Connection con;
         gridBagConstraints.gridy = 0;
         jPanel2.add(update, gridBagConstraints);
 
-        jButton4.setText("Edit");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnedit.setText("Edit");
+        btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btneditActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -479,7 +479,7 @@ Connection con;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jButton4, gridBagConstraints);
+        jPanel2.add(btnedit, gridBagConstraints);
 
         jButton6.setText("Remove Row");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -658,15 +658,21 @@ Connection con;
         }
     } catch (SQLException ex) {
         Logger.getLogger(NewFeesSetupIntfr.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(NewFeesSetupIntfr.class.getName()).log(Level.SEVERE, null, ex1);
+            }
     }
     }//GEN-LAST:event_btnsaveActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btneditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneditActionPerformed
         update.setVisible(true);
-        jButton4.setVisible(false);
+        btnedit.setVisible(false);
+        btnsave.setEnabled(false);
         jPanel3.setVisible(true);
         JOptionPane.showMessageDialog(this, "Please select the term and class that you wish to edit");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btneditActionPerformed
 
     private void jTextField117CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField117CaretUpdate
         if(jTextField117.getCaretPosition()>3){
@@ -714,10 +720,6 @@ Connection con;
                     pr.setObject(2, jTable1.getValueAt(i, 2));
                     pr.setObject(3, jTable1.getValueAt(i, 3));
                     pr.executeUpdate();
-            }
-            else if(jTable1.getValueAt(i, 0)==null &&jTable1.getValueAt(i, 1)==null && jTable1.getValueAt(i, 2)==null && jTable1.getValueAt(i, 3)==null){
-                JOptionPane.showMessageDialog(this, "Some information is missing. You cannot save empty spaces or \n update stuff that does not exist.");
-                return;
             }
         }
         con.commit();
@@ -788,12 +790,12 @@ Connection con;
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnedit;
     private javax.swing.JButton btnsave;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;

@@ -1041,6 +1041,100 @@ public class StockReceivingIntfr extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
@@ -1311,26 +1405,26 @@ public class StockReceivingIntfr extends javax.swing.JInternalFrame {
         JOptionPane.showMessageDialog(this, "Please select the receiver", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
         return;
         }
-       if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
-        JOptionPane.showMessageDialog(this, "Please select the item code", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
-        return;
-        }
-        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 1)==null){
-        JOptionPane.showMessageDialog(this, "Please select the item name", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
-        return;
-        }
-        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
-        JOptionPane.showMessageDialog(this, "Please select the Supplier Name", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
-        return;
-        }
-        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
-        JOptionPane.showMessageDialog(this, "Please input the quantity received", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
-        return;
-        }
-        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
-        JOptionPane.showMessageDialog(this, "Please input the receiving date", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
-        return;
-        }
+//       if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 0)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the item code", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
+//        return;
+//        }
+//        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 1)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the item name", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
+//        return;
+//        }
+//        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 2)==null){
+//        JOptionPane.showMessageDialog(this, "Please select the Supplier Name", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
+//        return;
+//        }
+//        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 3)==null){
+//        JOptionPane.showMessageDialog(this, "Please input the quantity received", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
+//        return;
+//        }
+//        if(jXTable1.getValueAt(jXTable1.getSelectedRow(), 4)==null){
+//        JOptionPane.showMessageDialog(this, "Please input the receiving date", "Missing Variables", JOptionPane.QUESTION_MESSAGE);
+//        return;
+//        }
         insertDetails();
     }
     private void insertDetails(){
@@ -1371,7 +1465,8 @@ public class StockReceivingIntfr extends javax.swing.JInternalFrame {
                             counter=rs2.getString(1);
                                 }
 
-                        if(jXTable1.getValueAt(i, 0)!=null){
+                        if(jXTable1.getValueAt(i, 0)!=null && jXTable1.getValueAt(i, 1)!=null && jXTable1.getValueAt(i, 2)!=null && jXTable1.getValueAt(i, 3)!=null && 
+                                jXTable1.getValueAt(i, 4)!=null && jXTable1.getValueAt(i, 5)!=null){
                             pr=con.prepareStatement(sql);
                             pr.setObject(1, counter);
                             pr.setObject(2, jXTable1.getValueAt(i, 4));
@@ -1685,7 +1780,7 @@ resetDetails();
         
      try {
          ResultSet rs=SQLHelper.getResultset(con, "select ord.item_code, item_name, ord.supplier_id, quantity_ordered from stock_items itm, stock_suppliers sup, "
-                 + "stock_orders ord where ord.item_code=itm.item_code and sup.supplier_id=ord.supplier_id and delivered=false and order_id='"+jTextField1.getText()+"'");
+                 + "stock_orders ord where sup.active=true and ord.item_code=itm.item_code and sup.supplier_id=ord.supplier_id and delivered=false and order_id='"+jTextField1.getText()+"'");
          int i=0;
          while(rs.next()){
              jXTable1.setValueAt(rs.getObject(1), i, 0);
@@ -1707,39 +1802,43 @@ resetDetails();
         AMSUtility.showSearchDialog(jTextField2, jSearchDialog25);
     }//GEN-LAST:event_jButton9ActionPerformed
     private void validateSave(){
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)==null){
-    JOptionPane.showMessageDialog(this, "Please select the item code", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 1)==null){
-    JOptionPane.showMessageDialog(this, "Please select the item name", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 2)==null){
-    JOptionPane.showMessageDialog(this, "Please select the supplier ID", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 3)==null){
-    JOptionPane.showMessageDialog(this, "Please select the quantity ordered", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 4)==null){
-    JOptionPane.showMessageDialog(this, "Please select the Quantity received", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 5)==null){
-    JOptionPane.showMessageDialog(this, "Please select the Deficit", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 6)==null){
-    JOptionPane.showMessageDialog(this, "Please input the supplied quantity", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
-    
-    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 7)==null){
-    JOptionPane.showMessageDialog(this, "Please select the current date", "Missing entries", JOptionPane.PLAIN_MESSAGE);
-    return;
-    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 0)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the item code", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 1)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the item name", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 2)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the supplier ID", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 3)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the quantity ordered", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 4)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the Quantity received", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 5)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the Deficit", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 6)==null){
+//    JOptionPane.showMessageDialog(this, "Please input the supplied quantity", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+//    
+//    if(jXTable2.getValueAt(jXTable2.getSelectedRow(), 7)==null){
+//    JOptionPane.showMessageDialog(this, "Please select the current date", "Missing entries", JOptionPane.PLAIN_MESSAGE);
+//    return;
+//    }
+        if(txtuser1.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Please select the receiver", "Missing data!!", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
     insert();
     }
     
@@ -1785,7 +1884,8 @@ resetDetails();
                     counter=no2.getString(1);
                 }
              
-             if(jXTable2.getValueAt(i, 0)!=null){
+             if(jXTable2.getValueAt(i, 0)!=null && jXTable2.getValueAt(i, 1)!=null && jXTable2.getValueAt(i, 2)!=null && jXTable2.getValueAt(i, 3)!=null && 
+                     jXTable2.getValueAt(i, 4)!=null && jXTable2.getValueAt(i, 5)!=null && jXTable2.getValueAt(i, 6)!=null && jXTable2.getValueAt(i, 7)!=null){
              pr.setObject(1, jXTable2.getValueAt(i, 0));
              pr.setObject(2, jXTable2.getValueAt(i, 6));
              pr.setObject(3, jXTable2.getValueAt(i, 2));
@@ -1807,7 +1907,7 @@ resetDetails();
              while(pricing.next()){
                  price=pricing.getDouble(1);
              }
-             double totl=((long) jXTable2.getValueAt(i, 6))*price;
+             double totl= Double.parseDouble(jXTable2.getValueAt(i, 6).toString())*price;
              pr.setObject(4, totl);
              pr.setString(5, "-");
              pr.setObject(6, jXTable2.getValueAt(i, 7));

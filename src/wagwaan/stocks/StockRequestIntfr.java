@@ -638,7 +638,8 @@ Connection con;
 
     private void jTextField1135CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1135CaretUpdate
        if(jTextField1135.getCaretPosition()>3){
-       jSearchTable25.setModel(TableModel.createTableVectors(con, "Select supplier_names from stock_suppliers where supplier_names ilike '%"+jTextField1135.getText()+"%'"));
+       jSearchTable25.setModel(TableModel.createTableVectors(con, "Select supplier_names from stock_suppliers where supplier_names ilike '%"+jTextField1135.getText()+"%' "
+               + " and active=true"));
        jSearchScrollPane25.setViewportView(jSearchTable25);
        }
     }//GEN-LAST:event_jTextField1135CaretUpdate
@@ -697,28 +698,8 @@ Connection con;
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void validateData(){
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 0)==null){
-            JOptionPane.showMessageDialog(this, "Please select the item code", "Missing information!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 2)==null){
-            JOptionPane.showMessageDialog(this, "Please select the supplier", "Missing information!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 3)==null){
-            JOptionPane.showMessageDialog(this, "Please input the quantity required", "Missing information!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 4)==null){
-            JOptionPane.showMessageDialog(this, "Please select the requesting department", "Missing information!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if(jTable1.getValueAt(jTable1.getSelectedRow(), 5)==null){
-            JOptionPane.showMessageDialog(this, "Please select the expected date", "Missing information!", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
         if(txtuser.getText().isEmpty()){
-        JOptionPane.showConfirmDialog(this, "Please select the requistioner", "Missing information!", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Please select the requistioner", "Missing information!", JOptionPane.ERROR_MESSAGE);
         return;
         }
         insertDetails();
@@ -739,7 +720,8 @@ Connection con;
         con.setAutoCommit(false);
         pr=con.prepareStatement(sql);
         for(int i=0;i<jTable1.getRowCount();i++){
-            if(jTable1.getValueAt(i, 0)!=null){
+            if(jTable1.getValueAt(i, 0)!=null && jTable1.getValueAt(i, 1)!=null && jTable1.getValueAt(i, 2)!=null && jTable1.getValueAt(i, 3)!=null && 
+                    jTable1.getValueAt(i, 4)!=null && jTable1.getValueAt(i, 5)!=null){
                 pr.setString(1, req_no);
                 pr.setObject(2, jTable1.getValueAt(i, 3));
                 pr.setObject(3, jTable1.getValueAt(i, 4));
@@ -835,6 +817,7 @@ Connection con;
                 jTable1.setValueAt(null, i, j);
             }
         }
+        txtuser.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

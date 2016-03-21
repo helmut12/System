@@ -212,7 +212,7 @@ Connection con;
 
     private void jTextField1132CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1132CaretUpdate
         if(jTextField1132.getCaretPosition()>2){
-            jSearchTable22.setModel(TableModel.createTableVectors(con, "SELECT distinct(current_term_id)  FROM term_fees_setup where current_term_id ilike '"+jTextField1132.getText()+"' "));
+            jSearchTable22.setModel(TableModel.createTableVectors(con, "SELECT distinct(term)  FROM fees_setup where term ilike '"+jTextField1132.getText()+"' "));
             jSearchScrollPane22.setViewportView(jSearchTable22);
         }
     }//GEN-LAST:event_jTextField1132CaretUpdate
