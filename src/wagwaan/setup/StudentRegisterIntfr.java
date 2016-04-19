@@ -571,7 +571,7 @@ Connection con;
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel5.add(jPanel42, gridBagConstraints);
 
-        jLabel13.setText("Term");
+        jLabel13.setText("Entry Term");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -672,6 +672,7 @@ Connection con;
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(jPanel2, gridBagConstraints);
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECTION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         buttonGroup1.add(jRadioButton1);
@@ -735,6 +736,10 @@ Connection con;
 //        JOptionPane.showMessageDialog(this, "Caution!", "Please input the student id!", JOptionPane.ERROR_MESSAGE);
 //        return;
 //    }
+    if(!jRadioButton1.isSelected()){
+        JOptionPane.showMessageDialog(this, "Please select the an item from the selection Panel", "Missing Variables!", JOptionPane.INFORMATION_MESSAGE);
+        return;
+    }
     if(txtfname.getText().isEmpty()){
     JOptionPane.showMessageDialog(this,  "Please input the first name!!", "Caution!", JOptionPane.ERROR_MESSAGE);
         return;
@@ -991,6 +996,7 @@ return id;
     private void jRadioButton1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jRadioButton1ItemStateChanged
 if(jRadioButton1.isSelected()){
             searchButton1.setEnabled(false);
+            searchButton2.setEnabled(true);
                     txtfname.setEditable(true);
             txtmname.setEditable(true);
             txtlname.setEditable(true);
@@ -1001,8 +1007,9 @@ if(jRadioButton1.isSelected()){
             txtparentnames.setEditable(true);
             txtparentphoneno.setEditable(true);
             jComboBox1.setEnabled(true);
-btnsave.setEnabled(true);
+            btnsave.setEnabled(true);
             btnedit.setEnabled(false);
+//            resetDetails();
 }
     }//GEN-LAST:event_jRadioButton1ItemStateChanged
 
@@ -1025,23 +1032,25 @@ btnsave.setEnabled(true);
         txtmname.setText(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 2).toString());
         txtlname.setText(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 3).toString());
         jSearchDialog21.dispose();
-        SimpleDateFormat df=new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         Date dob_date, adm_date;
         
     try {
         Statement st1=con.createStatement();
-        ResultSet rs=st1.executeQuery("select dob, gender, admission_date, residence, address, parents_guardian_names, students_class, parent_guardian_phoneno from student_registration where student_id= '"+txtid.getText()+"'  ");
+        ResultSet rs=st1.executeQuery("select dob, gender, admission_date, residence, address, parents_guardian_names, students_class, parent_guardian_phoneno, entry_term from student_registration where student_id= '"+txtid.getText()+"' and active=true");
         while(rs.next()){
             dob_date=df.parse(rs.getObject(1).toString());
             dob.setDate(dob_date);
             combogender.setSelectedItem(rs.getObject(2));
             adm_date=df.parse(rs.getObject(3).toString());
+            System.err.println("Admisstion Date:    "+adm_date);
             admdate.setDate(adm_date);
             txtresidence.setText(rs.getString(4));
             txtaddress.setText(rs.getString(5));
             txtparentnames.setText(rs.getString(6));
             jComboBox1.setSelectedItem(rs.getObject(7));
             txtparentphoneno.setText(rs.getString(8));
+            txtid1.setText(rs.getString(9));
         }
     } catch (SQLException ex) {
         Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
@@ -1058,6 +1067,7 @@ btnsave.setEnabled(true);
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         if(jRadioButton2.isSelected()){
             searchButton1.setEnabled(true);
+            searchButton2.setEnabled(false);
                     txtfname.setEditable(false);
                     btnsave.setEnabled(false);
             txtmname.setEditable(false);
@@ -1169,19 +1179,23 @@ btnsave.setEnabled(true);
         
          int option=JOptionPane.showConfirmDialog(this, "Are you sure you want to delete student ID: "+txtid.getText()+"?\n. Please Note that all information relating to this student will be deleted","Confirmation before Deletion!!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(option==JOptionPane.YES_OPTION){
+         JOptionPane.showMessageDialog(this, "Please input the password to enable student deletion");
          jLabel14.setVisible(true);
         jPasswordField1.setVisible(true);
         
        
-       if(jPasswordField1.getText().isEmpty())
+       if(jPasswordField1.getText().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Please input the password to enable student deletion");
            return;
+       }
+           
        if(!jPasswordField1.getText().equals("deletion2015")){
             
         JOptionPane.showMessageDialog(this, "Incorrect Password");
         return;
         }
         else{
-            JOptionPane.showMessageDialog(this, "Deletion will be effected immediately");
+//            JOptionPane.showMessageDialog(this, "Deletion will be effected immediately");
             try {
                 con.setAutoCommit(false);
                 PreparedStatement pr=con.prepareStatement("delete from student_registration where student_id='"+txtid.getText()+"'");

@@ -623,6 +623,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 8, 0, 0);
         jPanel1.add(dateChooserField1, gridBagConstraints);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SELECTION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 0, 0))); // NOI18N
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
         buttonGroup1.add(jRadioButton1);
@@ -709,7 +710,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
     private void jTextField1131CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1131CaretUpdate
         if(jTextField1131.getCaretPosition()>3){
                 if(jRadioButton2.isSelected()){
-                jSearchTable21.setModel(TableModel.createTableVectors(con, "select staff_id, first_name, middle_name, last_name from staff_registration where first_name ||' '||middle_name ||' '||last_name ilike '%"+jTextField1131.getText()+"%' "));
+                jSearchTable21.setModel(TableModel.createTableVectors(con, "select staff_id, first_name, middle_name, last_name from staff_registration where first_name ||' '||middle_name ||' '||last_name ilike '%"+jTextField1131.getText()+"%' and active=true"));
                 jSearchScrollPane21.setViewportView(jSearchTable21);
                 }
         }
@@ -721,12 +722,12 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         txtmname.setText(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 2).toString());
         txtlname.setText(jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 3).toString());
         jSearchDialog21.dispose();
-        SimpleDateFormat df=new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
         Date dob_date, adm_date;
         
         try {
             Statement st1=con.createStatement();
-            ResultSet rs=st1.executeQuery("SELECT national_id, phone_no, nextof_kin_names, nextof_kin_phoneno, department_id, designation, dob, gender, employment_date  FROM staff_registration where staff_id='"+jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 0).toString()+"' ");
+            ResultSet rs=st1.executeQuery("SELECT national_id, phone_no, nextof_kin_names, nextof_kin_phoneno, department_id, designation, dob, gender, employment_date  FROM staff_registration where staff_id='"+jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 0).toString()+"' and active=true");
             while(rs.next()){
                 dob_date=df.parse(rs.getObject(7).toString());
                 dateChooserField1.setDate(dob_date);
@@ -829,13 +830,14 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
     JOptionPane.showMessageDialog(this, "Please select the employment date");
     return;
     }
+    
     }
     
     
     private void insertDetails(){
     PreparedStatement pr=null;
-    String sql="INSERT INTO staff_registration(staff_id, first_name, middle_name, last_name, national_id, phone_no, nextof_kin_names, nextof_kin_phoneno, department_id, designation, dob, gender, employment_date)\n" +
-"    VALUES (?, ?, ?, ?, ?, ?,  ?, ?, ?, ?,  ?::date, ?, ?::date)";
+    String sql="INSERT INTO staff_registration(staff_id, first_name, middle_name, last_name, national_id, phone_no, nextof_kin_names, "
+            + "nextof_kin_phoneno, department_id, designation, dob, gender, employment_date)VALUES (?, ?, ?, ?, ?, ?,  ?, ?, ?, ?,  ?::date, ?, ?::date)";
         try {
             con.setAutoCommit(false);
             pr=con.prepareStatement(sql);
@@ -853,8 +855,9 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
             pr.setObject(12, combogender.getSelectedItem());
             pr.setObject(13, dateChooserField2.getDate().toString());
             pr.executeUpdate();
-    con.commit();
-    
+            con.commit();
+            con.setAutoCommit(true);
+            
             if(pr!=null){
             JOptionPane.showMessageDialog(this, "Insert is Successful");
             clearFields();
@@ -882,7 +885,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
                 btnupdate.setEnabled(false);
                 btnedit.setEnabled(false);
                 searchButton1.setEnabled(false);
-//                searchButton2.setEnabled(true);
+                searchButton2.setEnabled(true);
 //            txtid.setEditable(true);
             txtfname.setEditable(true);
             txtmname.setEditable(true);
@@ -905,7 +908,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
             searchButton1.setEnabled(true);
             btnedit.setEnabled(true);
             btnsave.setEnabled(false);
-//            searchButton2.setEnabled(false);
+            searchButton2.setEnabled(false);
             txtfname.setEditable(false);
             txtmname.setEditable(false);
             txtlname.setEditable(false);
@@ -920,6 +923,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRadioButton2ItemStateChanged
             private void clearFields(){
                 txtid.setText("");
+                buttonGroup1.clearSelection();
                 jLabel14.setVisible(false);
                 jPasswordField1.setVisible(false);
                 txtfname.setText("");
@@ -928,6 +932,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
                 txtidno.setText("");
                 combogender.setSelectedItem(null);
                 dateChooserField1.setDate(null);
+                dateChooserField2.setDate(null);
                 txtphoneno.setText("");
                 txtkinnames.setText("");
                 txtkinphoneno.setText("");
@@ -944,6 +949,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         int count=0;
         sql="select count(staff_id) from staff_registration where staff_id='"+txtid.getText()+"' ";
         try {
+            con.setAutoCommit(false);
             Statement st=con.createStatement();
             ResultSet rs=st.executeQuery(sql);
             while (rs.next()){
@@ -969,6 +975,9 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
             pr.setObject(12, combogender.getSelectedItem());
             pr.setObject(13, dateChooserField2.getDate().toString());
             pr.executeUpdate();
+            con.commit();
+            con.setAutoCommit(true);
+            
             if(pr!=null){
                 JOptionPane.showMessageDialog(this, "Update Successful");
                 clearFields();
@@ -982,6 +991,12 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
             insertDetails();
             }
         } catch (SQLException ex) {
+            try {
+                con.rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(StaffRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex1);
+                JOptionPane.showMessageDialog(this, ex1.getMessage());
+            }
             Logger.getLogger(StaffRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
@@ -1003,7 +1018,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
             txtphoneno.setEditable(true);
             txtkinnames.setEditable(true);
             txtkinphoneno.setEditable(true);
-            txtdeptid.setEditable(true);
+//            txtdeptid.setEditable(true);
             txtdesignation.setEditable(true);
     }//GEN-LAST:event_btneditActionPerformed
 
@@ -1038,15 +1053,17 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         jPasswordField1.setVisible(true);
         
        
-       if(jPasswordField1.getText().isEmpty())
+       if(jPasswordField1.getText().isEmpty()){
+           JOptionPane.showMessageDialog(this, "Please input the password to delete the staff", "Missing info!!", JOptionPane.INFORMATION_MESSAGE);
            return;
+       }
+           
        if(!jPasswordField1.getText().equals("deletion2015")){
-            
         JOptionPane.showMessageDialog(this, "Incorrect Password");
         return;
         }
+       
         else{
-            JOptionPane.showMessageDialog(this, "Deletion will be effected immediately");
             try {
                 con.setAutoCommit(false);
                 PreparedStatement pr=con.prepareStatement("delete from staff_registration where staff_id='"+txtid.getText()+"'");

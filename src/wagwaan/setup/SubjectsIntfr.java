@@ -23,6 +23,7 @@ Connection con;
     public SubjectsIntfr() {
         initComponents();
         con=ConnectionDB.getInstance().getCon();
+        
     }
 
     /**
