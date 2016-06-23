@@ -456,7 +456,6 @@ else{
                     pr=connectDB.prepareStatement(sequel);
                     pr.setInt(1, login_count+1);
                     pr.executeUpdate();
-                JOptionPane.showMessageDialog(this, "Access Granted");
                 this.dispose(); 
                 
                 SysMain s=new SysMain();

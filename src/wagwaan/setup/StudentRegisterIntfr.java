@@ -1179,13 +1179,11 @@ if(jRadioButton1.isSelected()){
         
          int option=JOptionPane.showConfirmDialog(this, "Are you sure you want to delete student ID: "+txtid.getText()+"?\n. Please Note that all information relating to this student will be deleted","Confirmation before Deletion!!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
         if(option==JOptionPane.YES_OPTION){
-         JOptionPane.showMessageDialog(this, "Please input the password to enable student deletion");
          jLabel14.setVisible(true);
         jPasswordField1.setVisible(true);
         
        
        if(jPasswordField1.getText().isEmpty()){
-           JOptionPane.showMessageDialog(this, "Please input the password to enable student deletion");
            return;
        }
            

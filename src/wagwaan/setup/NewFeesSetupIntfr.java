@@ -394,7 +394,7 @@ Connection con;
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        java.lang.Object[] strCmb24 = {"BABY CLASS","PRE-UNIT","STD. 1","STD. 2","STD. 3","STD. 4","STD. 5", "STD. 6", "STD. 7", "STD. 8"};
+        java.lang.Object[] strCmb24 = {"BABY CLASS","NURSERY", "PRE-UNIT","STD. 1","STD. 2","STD. 3","STD. 4","STD. 5", "STD. 6", "STD. 7", "STD. 8"};
 
         javax.swing.JComboBox cmBox24 = new javax.swing.JComboBox(strCmb24);
 

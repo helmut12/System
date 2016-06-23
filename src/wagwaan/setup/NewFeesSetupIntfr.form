@@ -281,7 +281,7 @@
                     <Column editable="true" title="Amount" type="java.lang.Double"/>
                   </Table>
                 </Property>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="java.lang.Object[] strCmb24 = {&quot;BABY CLASS&quot;,&quot;PRE-UNIT&quot;,&quot;STD. 1&quot;,&quot;STD. 2&quot;,&quot;STD. 3&quot;,&quot;STD. 4&quot;,&quot;STD. 5&quot;, &quot;STD. 6&quot;, &quot;STD. 7&quot;, &quot;STD. 8&quot;};&#xa;&#xa;javax.swing.JComboBox cmBox24 = new javax.swing.JComboBox(strCmb24);&#xa;&#xa;javax.swing.table.TableColumn teditor24 = this.jTable1.getColumn(&quot;Class&quot;);&#xa;            &#xa;            teditor24.setCellEditor(new javax.swing.DefaultCellEditor(cmBox24));">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="java.lang.Object[] strCmb24 = {&quot;BABY CLASS&quot;,&quot;NURSERY&quot;, &quot;PRE-UNIT&quot;,&quot;STD. 1&quot;,&quot;STD. 2&quot;,&quot;STD. 3&quot;,&quot;STD. 4&quot;,&quot;STD. 5&quot;, &quot;STD. 6&quot;, &quot;STD. 7&quot;, &quot;STD. 8&quot;};&#xa;&#xa;javax.swing.JComboBox cmBox24 = new javax.swing.JComboBox(strCmb24);&#xa;&#xa;javax.swing.table.TableColumn teditor24 = this.jTable1.getColumn(&quot;Class&quot;);&#xa;            &#xa;            teditor24.setCellEditor(new javax.swing.DefaultCellEditor(cmBox24));">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>

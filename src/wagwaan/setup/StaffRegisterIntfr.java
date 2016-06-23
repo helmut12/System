@@ -10,7 +10,6 @@ import wagwaan.config.ConnectionDB;
 import wagwaan.config.SQLHelper;
 import wagwaan.config.TableModel;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -710,7 +709,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
     private void jTextField1131CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1131CaretUpdate
         if(jTextField1131.getCaretPosition()>3){
                 if(jRadioButton2.isSelected()){
-                jSearchTable21.setModel(TableModel.createTableVectors(con, "select staff_id, first_name, middle_name, last_name from staff_registration where first_name ||' '||middle_name ||' '||last_name ilike '%"+jTextField1131.getText()+"%' and active=true"));
+                jSearchTable21.setModel(TableModel.createTableVectors(con, "select staff_id, first_name, middle_name, last_name from staff_registration where first_name ||' '||middle_name ||' '||last_name ilike '%"+jTextField1131.getText()+"%'"));
                 jSearchScrollPane21.setViewportView(jSearchTable21);
                 }
         }
@@ -727,7 +726,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         
         try {
             Statement st1=con.createStatement();
-            ResultSet rs=st1.executeQuery("SELECT national_id, phone_no, nextof_kin_names, nextof_kin_phoneno, department_id, designation, dob, gender, employment_date  FROM staff_registration where staff_id='"+jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 0).toString()+"' and active=true");
+            ResultSet rs=st1.executeQuery("SELECT national_id, phone_no, nextof_kin_names, nextof_kin_phoneno, department_id, designation, dob, gender, employment_date  FROM staff_registration where staff_id='"+jSearchTable21.getValueAt(jSearchTable21.getSelectedRow(), 0).toString()+"'");
             while(rs.next()){
                 dob_date=df.parse(rs.getObject(7).toString());
                 dateChooserField1.setDate(dob_date);
@@ -741,9 +740,7 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
                 txtdeptid.setText(rs.getString(5));
                 txtdesignation.setText(rs.getString(6));
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ParseException ex) {
+        } catch (SQLException | ParseException ex) {
             Logger.getLogger(StudentRegisterIntfr.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -1054,7 +1051,6 @@ public class StaffRegisterIntfr extends javax.swing.JInternalFrame {
         
        
        if(jPasswordField1.getText().isEmpty()){
-           JOptionPane.showMessageDialog(this, "Please input the password to delete the staff", "Missing info!!", JOptionPane.INFORMATION_MESSAGE);
            return;
        }
            

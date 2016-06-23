@@ -283,7 +283,7 @@ private final Image backImage = new ImageIcon(this.getClass().getResource("/wagw
         });
         jMenu1.add(jMenuItem5);
 
-        jMenuItem8.setText("Suspending Suppliers");
+        jMenuItem8.setText("Suspending & Reactivating Suppliers");
         jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem8ActionPerformed(evt);
